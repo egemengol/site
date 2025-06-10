@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}/blog.css{% endblock stylesheet %}
+
+{% block title %}Categories{% endblock title %}
+
+{% block content %}
+<div class="blog-list">
+    <h1>Categories</h1>
+    
+    <p>Browse all blog posts by category. Each category groups related posts under a common theme.</p>
+    
+    <div class="taxonomy-container">
+        {% if terms %}
+            {% for term in terms %}
+            <div class="taxonomy-item">
+                <a href="{{ term.permalink }}" class="taxonomy-link">
+                    <span class="taxonomy-name">{{ term.name }}</span>
+                    <span class="taxonomy-count">({{ term.pages | length }})</span>
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No categories found.</p>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+    .taxonomy-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .taxonomy-item {
+        margin-bottom: 0.5rem;
+    }
+    
+    .taxonomy-link {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: var(--text-primary);
+        transition: all 0.3s ease;
+    }
+    
+    .taxonomy-link:hover {
+        background-color: var(--bg-tertiary);
+        color: var(--link-color);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px var(--shadow);
+    }
+    
+    .taxonomy-count {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        margin-left: 0.25rem;
+    }
+</style>
+{% endblock content %}

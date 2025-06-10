@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: $persist(false) }" :data-theme="darkMode ? 'dark' : 'light'">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ config.title }}{% endblock title %} | Egemen</title>
+    <link rel="stylesheet" href="{% block stylesheet %}/default.css{% endblock stylesheet %}">
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="/theme.js"></script>
+    <script src="/search.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav>
+        <a href="/">
+          {% set logo = resize_image(path="logo.png", width=36, height=36) %}
+          <img src="{{ logo.url }}" alt="Logo"/>Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/book/">Book</a>
+      </nav>
+      <div class="header-controls">
+        <div class="search-container">
+          <input 
+            id="search" 
+            type="search" 
+            placeholder="🔎 Search" 
+            aria-label="Search" 
+            disabled
+          />
+        </div>
+        <button
+          @click="darkMode = !darkMode"
+          class="theme-toggle"
+          :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+          :title="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+        >
+          <span class="material-symbols-outlined" x-text="darkMode ? 'light_mode' : 'dark_mode'"></span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <div id="search-results-main" class="search-results" style="display: none;">
+        <h2>Search Results</h2>
+        <ul id="search-results-items-main" class="search-results__list"></ul>
+      </div>
+      <div class="content">
+        {% block content %}{% endblock content %}
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 My Awesome Site</p>
+    </footer>
+  </body>
+</html>
