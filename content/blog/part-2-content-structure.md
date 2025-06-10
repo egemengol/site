@@ -5,6 +5,8 @@ description = "Learn how to organize your content effectively with Zola's sectio
 [taxonomies]
 series = ["Zola Guide"]
 tags = ["static site", "tutorial", "content management"]
+[extra]
+series_index = 2
 +++
 
 # Content Structure in Zola

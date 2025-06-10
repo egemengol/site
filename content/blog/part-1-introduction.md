@@ -5,6 +5,8 @@ description = "An introduction to Zola and why it's a great choice for static si
 [taxonomies]
 series = ["Zola Guide"]
 tags = ["static site", "tutorial", "web development"]
+[extra]
+series_index = 1
 +++
 
 # Introduction to Building with Zola
@@ -28,16 +30,19 @@ Unlike other static site generators that require plugins or extensions for basic
 Installing Zola is straightforward. You can download pre-built binaries from the [official releases page](https://github.com/getzola/zola/releases) or install it using package managers:
 
 ### macOS
+
 ```bash
 brew install zola
 ```
 
 ### Linux
+
 ```bash
 snap install --edge zola
 ```
 
 ### Windows
+
 ```bash
 scoop install zola
 ```

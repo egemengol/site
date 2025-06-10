@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{% block stylesheet %}/default.css{% endblock stylesheet %}">
     <!-- <link rel="stylesheet" href="/style.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script src="/theme.js"></script>
-    <script src="/search.js"></script>
+    <script defer src="/theme.js"></script>
+    <script defer src="/search.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -18,17 +18,17 @@
       <nav>
         <a href="/">
           {% set logo = resize_image(path="logo.png", width=36, height=36) %}
-          <img src="{{ logo.url }}" alt="Logo"/>Home</a>
+          <img class="logo-link" src="{{ logo.url | replace(from=config.base_url, to="") }}" width="36" height="36" />Home</a>
         <a href="/blog/">Blog</a>
         <a href="/book/">Book</a>
       </nav>
       <div class="header-controls">
         <div class="search-container">
-          <input 
-            id="search" 
-            type="search" 
-            placeholder="🔎 Search" 
-            aria-label="Search" 
+          <input
+            id="search"
+            type="search"
+            placeholder="🔎 Search"
+            aria-label="Search"
             disabled
           />
         </div>
@@ -52,7 +52,7 @@
       </div>
     </main>
     <footer>
-      <p>&copy; 2025 My Awesome Site</p>
+      <p>&copy; 2025 Egemen Göl</p>
     </footer>
   </body>
 </html>

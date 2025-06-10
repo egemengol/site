@@ -121,11 +121,33 @@ function makeTeaser(body, terms) {
   return teaser.join("");
 }
 
+// function formatSearchResultItem(item, terms) {
+//   return (
+//     '<div class="search-results__item">' +
+//     `<a href="${item.ref}">${item.doc.title}</a>` +
+//     `<div>${makeTeaser(item.doc.body, terms)}</div>` +
+//     "</div>"
+//   );
+// }
+
 function formatSearchResultItem(item, terms) {
+  var meta = "";
+  if (item.doc.date) {
+    meta += `<span class="post-date">${new Date(item.doc.date).toISOString().split("T")[0]}</span>`;
+  }
+  if (item.doc.tags && item.doc.tags.length > 0) {
+    meta +=
+      ' <span class="post-tags">Tags: ' + item.doc.tags.join(", ") + "</span>";
+  }
+  if (item.doc.series) {
+    meta += ' <span class="post-series">Series: ' + item.doc.series + "</span>";
+  }
+
   return (
-    '<div class="search-results__item">' +
-    `<a href="${item.ref}">${item.doc.title}</a>` +
-    `<div>${makeTeaser(item.doc.body, terms)}</div>` +
+    '<div class="search-result-item">' +
+    `<h3><a href="${item.ref}">${item.doc.title}</a></h3>` +
+    (meta ? `<div class="search-result-meta">${meta}</div>` : "") +
+    `<div class="search-result-teaser">${makeTeaser(item.doc.body, terms)}</div>` +
     "</div>"
   );
 }

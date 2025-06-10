@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}/post.css{% endblock stylesheet %}
+
+{% block content %}
+<article class="blog-post">
+  <header class="post-header">
+    {% block post_header %}{% endblock post_header %}
+  </header>
+
+  <!-- Tags -->
+  {% if page.taxonomies.tags %}
+  <div class="post-tags">
+    <span>Tags: </span>
+    {% for tag in page.taxonomies.tags %}
+    <a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="post-content">
+  {% block post_content %}
+  <!-- Single post content goes here -->
+  {% endblock post_content %}
+  </div>
+
+  <!-- Series Navigation -->
+  {% if page.taxonomies.series %}
+  {% set series_taxonomy = get_taxonomy(kind="series") %}
+  {% for series_name in page.taxonomies.series %}
+    {% for series_term in series_taxonomy.items %}
+      {% if series_term.name == series_name %}
+        {% set sorted_pages = series_term.pages | sort(attribute="extra.series_index") %}
+        {% set current_index = page.extra.series_index %}
+
+        <nav class="series-navigation">
+          <h3>{{ series_name }} Series</h3>
+
+          <div class="series-nav-buttons">
+            {% for series_page in sorted_pages %}
+              {% if series_page.extra.series_index == current_index - 1 %}
+                <div class="nav-button prev">
+                  <a href="{{ series_page.path }}">← Previous: {{ series_page.title }}</a>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            {% for series_page in sorted_pages %}
+              {% if series_page.extra.series_index == current_index + 1 %}
+                <div class="nav-button next">
+                  <a href="{{ series_page.path }}">Next: {{ series_page.title }} →</a>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="series-overview">
+            <a href="/series/{{ series_term.slug }}/">View all parts in {{ series_name }} series</a>
+          </div>
+        </nav>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  {% endif %}
+</article>
+{% endblock content %}

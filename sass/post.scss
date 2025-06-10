@@ -1,69 +1,16 @@
 @import "variables";
 @import "base";
 
-// Blog layout with sidebar
-.blog-layout {
-    display: flex;
-    gap: $spacing-lg;
-    max-width: $max-width;
-    margin: 0 auto;
-}
-
-.blog-sidebar {
-    width: $sidebar-width;
-    flex-shrink: 0;
-}
-
-.sidebar-section {
-    margin-bottom: $spacing-lg;
-}
-
-.sidebar-section h3 {
-    margin-bottom: $spacing-sm;
-    color: $color-text;
-}
-
-.tag-list,
-.series-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-xs;
-}
-
-.tag,
-.series {
-    display: inline-block;
-    padding: $spacing-xs;
-    color: $color-text;
-    text-decoration: none;
-    border: 1px solid $color-border;
-}
-
-.tag:hover,
-.series:hover {
-    background: #f5f5f5;
-}
-
-.tag.active,
-.series.active {
-    background: $color-text;
-    color: $color-bg;
-}
-
-.blog-posts {
-    flex: 1;
-    min-width: 0;
-}
-
 // Single blog post styles
 .blog-post {
     max-width: 800px;
+    margin: 0 auto;
 }
 
 .post-header {
-    margin-bottom: $spacing-lg;
+    /* margin-bottom: $spacing-lg; */
     padding-bottom: $spacing-md;
-    border-bottom: 1px solid $color-border;
+    /* border-bottom: 1px solid $color-border; */
 }
 
 .post-header h1 {
@@ -72,12 +19,16 @@
 
 .post-content {
     line-height: 1.7;
+    border-top: 1px solid $color-border;
+    padding-top: $spacing-md;
 }
 
 .post-content h2,
 .post-content h3,
 .post-content h4 {
     margin: $spacing-lg 0 $spacing-md 0;
+    /* border-top: 1px solid $color-border; */
+    padding-top: $spacing-md;
 }
 
 .post-content p {
@@ -94,11 +45,9 @@
     border-left: 3px solid $color-border;
     padding-left: $spacing-md;
     margin: $spacing-md 0;
-    color: #666;
 }
 
 .post-content code {
-    background: #f5f5f5;
     padding: 2px 4px;
     border-radius: 3px;
     font-size: 0.9em;
@@ -106,13 +55,26 @@
 
 // Post tags styling
 .post-tags {
-    margin-bottom: $spacing-lg;
+    /* margin-bottom: $spacing-lg; */
     padding-bottom: $spacing-md;
-    border-bottom: 1px solid $color-border;
+    /* border-bottom: 1px solid $color-border; */
 }
 
 .post-tags span {
     margin-right: $spacing-sm;
+}
+
+.post-tags .tag {
+    display: inline-block;
+    padding: $spacing-xs;
+    color: $color-text;
+    text-decoration: none;
+    border: 1px solid $color-border;
+    margin-right: $spacing-xs;
+}
+
+.post-tags .tag:hover {
+    background: #f5f5f5;
 }
 
 // Series navigation styling
@@ -124,6 +86,7 @@
 
 .series-navigation h3 {
     margin-bottom: $spacing-md;
+    text-align: center;
 }
 
 .series-nav-buttons {
@@ -144,5 +107,4 @@
     text-align: center;
     margin-top: $spacing-md;
     padding-top: $spacing-md;
-    border-top: 1px solid $color-border;
 }
