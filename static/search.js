@@ -143,9 +143,19 @@ function formatSearchResultItem(item, terms) {
     meta += ' <span class="post-series">Series: ' + item.doc.series + "</span>";
   }
 
+  // Convert absolute URL to relative URL
+  var relativeUrl = item.ref;
+  try {
+    var url = new URL(item.ref);
+    relativeUrl = url.pathname + url.search + url.hash;
+  } catch (e) {
+    // If it's already a relative URL or malformed, use as-is
+    relativeUrl = item.ref;
+  }
+
   return (
     '<div class="search-result-item">' +
-    `<h3><a href="${item.ref}">${item.doc.title}</a></h3>` +
+    `<h3><a href="${relativeUrl}">${item.doc.title}</a></h3>` +
     (meta ? `<div class="search-result-meta">${meta}</div>` : "") +
     `<div class="search-result-teaser">${makeTeaser(item.doc.body, terms)}</div>` +
     "</div>"
