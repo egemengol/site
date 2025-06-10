@@ -34,13 +34,13 @@
         {% set current_index = page.extra.series_index %}
 
         <nav class="series-navigation">
-          <h3>{{ series_name }} Series</h3>
+          <h3><a href="/series/{{ series_term.slug }}/">{{ series_name }} Series</a></h3>
 
           <div class="series-nav-buttons">
             {% for series_page in sorted_pages %}
               {% if series_page.extra.series_index == current_index - 1 %}
                 <div class="nav-button prev">
-                  <a href="{{ series_page.path }}">← Previous: {{ series_page.title }}</a>
+                  <a href="{{ series_page.path }}">← {{ series_page.title }}</a>
                 </div>
               {% endif %}
             {% endfor %}
@@ -48,15 +48,13 @@
             {% for series_page in sorted_pages %}
               {% if series_page.extra.series_index == current_index + 1 %}
                 <div class="nav-button next">
-                  <a href="{{ series_page.path }}">Next: {{ series_page.title }} →</a>
+                  <a href="{{ series_page.path }}">{{ series_page.title }} →</a>
                 </div>
               {% endif %}
             {% endfor %}
           </div>
 
-          <div class="series-overview">
-            <a href="/series/{{ series_term.slug }}/">View all parts in {{ series_name }} series</a>
-          </div>
+
         </nav>
       {% endif %}
     {% endfor %}

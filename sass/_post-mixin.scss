@@ -15,7 +15,7 @@
   }
 
   .post-content {
-    line-height: 1.7;
+    line-height: $line-height-base;
     border-top: 1px solid $color-border;
     padding-top: $spacing-md;
   }
@@ -23,30 +23,7 @@
   .post-content h2,
   .post-content h3,
   .post-content h4 {
-    margin: $spacing-lg 0 $spacing-md 0;
     padding-top: $spacing-md;
-  }
-
-  .post-content p {
-    margin-bottom: $spacing-md;
-  }
-
-  .post-content ul,
-  .post-content ol {
-    margin-bottom: $spacing-md;
-    padding-left: $spacing-lg;
-  }
-
-  .post-content blockquote {
-    border-left: 3px solid $color-border;
-    padding-left: $spacing-md;
-    margin: $spacing-md 0;
-  }
-
-  .post-content code {
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-size: 0.9em;
   }
 
   // Post tags styling
@@ -59,16 +36,7 @@
   }
 
   .post-tags .tag {
-    display: inline-block;
-    padding: $spacing-xs;
-    color: $color-text;
-    text-decoration: none;
-    border: 1px solid $color-border;
     margin-right: $spacing-xs;
-  }
-
-  .post-tags .tag:hover {
-    background: #f5f5f5;
   }
 
   // Series navigation styling
@@ -87,19 +55,18 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: $spacing-md;
+    gap: $spacing-md;
+    width: 100%;
   }
 
   .nav-button {
-    flex: 1;
+    flex: 0 0 40%;
+    max-width: 40%;
   }
 
   .nav-button.next {
-    text-align: right;
+    margin-left: auto;
   }
 
-  .series-overview {
-    text-align: center;
-    margin-top: $spacing-md;
-    padding-top: $spacing-md;
-  }
+
 }

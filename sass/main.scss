@@ -1,29 +1,150 @@
 @import "variables";
+@import "common";
 @import "blog-mixin";
 @import "post-mixin";
 @import "index-mixin";
 
-// Default page styles (fallback)
-body.default {
-    // Any default page styles can go here
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+// Sticky footer layout
+html, body {
+    height: 100%;
 }
 
-// Homepage styles
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+// Header controls styling - more specific to override common styles
+body .site-header nav a {
+    font-family: $font-family-primary;
+    font-size: 1.2rem; // Bigger font size for header links
+    text-decoration: none;
+    color: $color-text !important; // Primary color instead of accent
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    height: fit-content; // Prevent height issues
+}
+
+body .site-header nav a:hover {
+    color: $color-accent !important; // Accent color only on hover
+    background: $color-hover-bg;
+    text-decoration: none;
+}
+
+.search-container input {
+    font-family: $font-family-primary;
+    font-size: $font-size-base;
+    padding: $spacing-xs;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    background: $color-bg;
+    color: $color-text;
+    width: 200px;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: $color-accent;
+}
+
+.search-container input::placeholder {
+    color: $color-text-muted;
+}
+
+.theme-toggle {
+    font-family: $font-family-primary;
+    background: $color-bg;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    padding: $spacing-xs;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: $color-text;
+}
+
+.theme-toggle:hover {
+    background: $color-hover-bg;
+}
+
+.theme-toggle img {
+    width: 24px;
+    height: 24px;
+}
+
+// Search results
+.search-results {
+    margin-bottom: $spacing-lg;
+}
+
+.search-results h2 {
+    font-family: $font-family-primary;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: $spacing-md;
+}
+
+.search-results__list {
+    font-family: $font-family-primary;
+    list-style: none;
+    padding: 0;
+}
+
+.search-results__list li {
+    margin-bottom: $spacing-sm;
+}
+
+.search-results__list a {
+    color: $color-accent;
+    text-decoration: none;
+}
+
+.search-results__list a:hover {
+    color: $color-accent-hover;
+    text-decoration: underline;
+}
+
+// Footer
+footer {
+    font-family: $font-family-primary;
+    border-top: 1px solid $color-border;
+    padding: $spacing-md;
+    text-align: center;
+    color: $color-text-muted;
+    margin-top: auto;
+}
+
+// Page-specific body class styling with common styles
 body.homepage {
+    @include common-styles;
     @include index-styles;
 }
 
-// Blog listing and sidebar styles
 body.blog {
+    @include common-styles;
     @include blog-styles;
 }
 
-// Individual post styles
 body.post {
+    @include common-styles;
     @include post-styles;
 }
 
-// You can add more page-specific body classes here
-// body.special-page {
-//   @include special-styles;
-// }
+body.default {
+    @include common-styles;
+}
