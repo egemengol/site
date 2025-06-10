@@ -54,6 +54,15 @@
         min-width: 0;
     }
 
+    // Blog listing page h1 styling
+    .blog-posts h1 {
+        font-size: 2rem;
+        margin-bottom: $spacing-lg;
+        margin-top: 0;
+        color: $color-text;
+        font-weight: 600;
+    }
+
     // Single blog post styles
     .blog-post {
         max-width: 800px;

@@ -1,87 +1,113 @@
-// Theme initialization and utility functions
-(function() {
-    'use strict';
-    
-    // Initialize theme on page load
-    function initializeTheme() {
-        // Get saved theme preference or default to system preference
-        const savedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        let initialTheme;
-        if (savedTheme) {
-            initialTheme = savedTheme;
-        } else {
-            initialTheme = systemPrefersDark ? 'dark' : 'light';
-        }
-        
-        // Apply theme immediately to prevent flash
-        document.documentElement.setAttribute('data-theme', initialTheme);
-        
-        // Update Alpine.js data if available
-        if (window.Alpine && window.Alpine.store) {
-            window.Alpine.store('theme', {
-                current: initialTheme,
-                isDark: initialTheme === 'dark'
-            });
-        }
+(function () {
+  "use strict";
+
+  let isDark = window.currentThemeIsDark || false;
+
+  // Update UI elements that depend on theme
+  function updateThemeUI() {
+    const themeButton = document.querySelector(".theme-toggle");
+    if (themeButton) {
+      const themeIcon = document.getElementById("theme-icon");
+      if (themeIcon) {
+        themeIcon.src = isDark ? '/light_mode.svg' : '/dark_mode.svg';
+        themeIcon.alt = isDark ? 'light' : 'dark';
+      }
+
+      themeButton.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light mode" : "Switch to dark mode",
+      );
+      themeButton.setAttribute(
+        "title",
+        isDark ? "Switch to light mode" : "Switch to dark mode",
+      );
     }
-    
-    // Listen for system theme changes
-    function watchSystemTheme() {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        
-        mediaQuery.addEventListener('change', (e) => {
-            // Only update if user hasn't manually set a preference
-            const savedTheme = localStorage.getItem('theme');
-            if (!savedTheme) {
-                const newTheme = e.matches ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                
-                // Dispatch custom event for other components
-                window.dispatchEvent(new CustomEvent('themeChanged', {
-                    detail: { theme: newTheme }
-                }));
-            }
-        });
+  }
+
+  // Toggle theme function
+  function toggleTheme() {
+    isDark = !isDark;
+
+    try {
+      localStorage.setItem("isDark", isDark);
+    } catch (e) {
+      console.warn("Could not save theme preference:", e);
     }
-    
-    // Utility function to toggle theme programmatically
-    window.toggleTheme = function() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // Dispatch custom event
-        window.dispatchEvent(new CustomEvent('themeChanged', {
-            detail: { theme: newTheme }
-        }));
-        
-        return newTheme;
-    };
-    
-    // Utility function to get current theme
-    window.getCurrentTheme = function() {
-        return document.documentElement.getAttribute('data-theme') || 'light';
-    };
-    
-    // Initialize immediately
-    initializeTheme();
-    
-    // Initialize system theme watching when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', watchSystemTheme);
-    } else {
-        watchSystemTheme();
+
+    // Update DOM
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDark ? "dark" : "light",
+    );
+
+    // Update global state
+    window.currentThemeIsDark = isDark;
+
+    // Update UI elements
+    updateThemeUI();
+
+    // Dispatch custom event for other components
+    window.dispatchEvent(
+      new CustomEvent("themeChanged", {
+        detail: { isDark: isDark, theme: isDark ? "dark" : "light" },
+      }),
+    );
+
+    console.log("isDark", isDark);
+  }
+
+  // Set up event listeners when DOM is ready
+  function setupEventListeners() {
+    const themeButton = document.querySelector(".theme-toggle");
+    if (themeButton) {
+      themeButton.addEventListener("click", toggleTheme);
     }
-    
-    // Prevent flash of unstyled content
-    document.documentElement.style.setProperty('--transition-duration', '0s');
-    
-    // Re-enable transitions after a short delay
-    setTimeout(() => {
-        document.documentElement.style.removeProperty('--transition-duration');
-    }, 100);
+  }
+
+  // Initialize event listeners
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupEventListeners);
+  } else {
+    setupEventListeners();
+  }
+
+  // Listen for cross-tab theme changes
+  window.addEventListener("storage", function (e) {
+    if (e.key === "isDark" && e.newValue !== null) {
+      const newIsDark = e.newValue === "true";
+      if (newIsDark !== isDark) {
+        isDark = newIsDark;
+        window.currentThemeIsDark = isDark;
+        document.documentElement.setAttribute(
+          "data-theme",
+          isDark ? "dark" : "light",
+        );
+        updateThemeUI();
+
+        // Dispatch event for consistency
+        window.dispatchEvent(
+          new CustomEvent("themeChanged", {
+            detail: { isDark: isDark, theme: isDark ? "dark" : "light" },
+          }),
+        );
+      }
+    }
+  });
+
+  // Utility functions for external use
+  window.toggleTheme = toggleTheme;
+  window.getCurrentTheme = function () {
+    return isDark ? "dark" : "light";
+  };
+  window.isDarkMode = function () {
+    return isDark;
+  };
+
+  // Prevent flash of unstyled content during transitions
+  document.documentElement.style.setProperty("--transition-duration", "0s");
+
+  // Re-enable transitions after a short delay
+  setTimeout(() => {
+    document.documentElement.style.removeProperty("--transition-duration");
+  }, 100);
 })();

@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ darkMode: $persist(false) }" :data-theme="darkMode ? 'dark' : 'light'">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ config.title }}{% endblock title %} | Egemen</title>
-    <style>{{ load_data(path="/critical.css") }}</style>
+
+    <!-- Minimal theme initialization to prevent FOUC -->
+    <script>
+      (function() {
+        let isDark;
+        try {
+          const stored = localStorage.getItem("isDark");
+          isDark = stored !== null ? stored === "true" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (stored === null) localStorage.setItem("isDark", isDark);
+        } catch (e) {
+          isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        }
+        document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+        window.currentThemeIsDark = isDark;
+        
+        // Inject preload for the correct theme icon
+        const iconPath = isDark ? "/light_mode.svg" : "/dark_mode.svg";
+        document.write('<link rel="preload" href="' + iconPath + '" as="image" type="image/svg+xml">');
+      })();
+    </script>
+
+    <style>
+      {{ load_data(path="/critical.css") }}
+    </style>
     <link rel="stylesheet" href="/main.css">
 
     <script async defer src="/theme.js"></script>
@@ -12,12 +35,8 @@
 
     <!-- Preload critical assets -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="preload" href="/dark_mode.svg" as="image" type="image/svg+xml">
-    <link rel="preload" href="/light_mode.svg" as="image" type="image/svg+xml">
 
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
   </head>
   <body class="{% block page_class %}default{% endblock page_class %}">
     <header class="site-header">
@@ -39,12 +58,14 @@
           />
         </div>
         <button
-          @click="darkMode = !darkMode"
           class="theme-toggle"
-          :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
-          :title="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+          aria-label="Switch theme"
+          title="Switch theme"
         >
-          <img :src="darkMode ? '/light_mode.svg' : '/dark_mode.svg'" :alt="darkMode ? 'Light mode' : 'Dark mode'" width="24" height="24" />
+          <script>
+            const isDark = window.currentThemeIsDark;
+            document.write('<img id="theme-icon" src="' + (isDark ? '/light_mode.svg' : '/dark_mode.svg') + '" alt="' + (isDark ? 'light' : 'dark') + '" width="24" height="24" />');
+          </script>
         </button>
       </div>
     </header>
