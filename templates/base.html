@@ -4,23 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ config.title }}{% endblock title %} | Egemen</title>
-    <link rel="stylesheet" href="{% block stylesheet %}/default.css{% endblock stylesheet %}">
-    <!-- <link rel="stylesheet" href="/style.css"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <script defer src="/theme.js"></script>
-    <script defer src="/search.js"></script>
+    <style>{{ load_data(path="/critical.css") }}</style>
+    <link rel="stylesheet" href="/main.css">
+
+    <script async defer src="/theme.js"></script>
+    <script async defer src="/search.js"></script>
+
+    <!-- Preload critical assets -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preload" href="/dark_mode.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="/light_mode.svg" as="image" type="image/svg+xml">
+
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
-  <body>
+  <body class="{% block page_class %}default{% endblock page_class %}">
     <header class="site-header">
       <nav>
         <a href="/">
           {% set logo = resize_image(path="logo.png", width=36, height=36) %}
           <img class="logo-link" src="{{ logo.url | replace(from=config.base_url, to="") }}" width="36" height="36" />Home</a>
         <a href="/blog/">Blog</a>
-        <a href="/book/">Book</a>
+        <!-- <a href="/book/">Book</a> -->
       </nav>
       <div class="header-controls">
         <div class="search-container">
@@ -38,7 +44,7 @@
           :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
           :title="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
         >
-          <span class="material-symbols-outlined" x-text="darkMode ? 'light_mode' : 'dark_mode'"></span>
+          <img :src="darkMode ? '/light_mode.svg' : '/dark_mode.svg'" :alt="darkMode ? 'Light mode' : 'Dark mode'" width="24" height="24" />
         </button>
       </div>
     </header>

@@ -1,0 +1,29 @@
+@import "variables";
+@import "blog-mixin";
+@import "post-mixin";
+@import "index-mixin";
+
+// Default page styles (fallback)
+body.default {
+    // Any default page styles can go here
+}
+
+// Homepage styles
+body.homepage {
+    @include index-styles;
+}
+
+// Blog listing and sidebar styles
+body.blog {
+    @include blog-styles;
+}
+
+// Individual post styles
+body.post {
+    @include post-styles;
+}
+
+// You can add more page-specific body classes here
+// body.special-page {
+//   @include special-styles;
+// }

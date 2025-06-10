@@ -1,28 +1,10 @@
 {% extends "base.html" %}
 
-{% block stylesheet %}/blog.css{% endblock stylesheet %}
+{% block page_class %}blog{% endblock page_class %}
 
 {% block content %}
 <div class="blog-layout">
   <aside class="blog-sidebar">
-    <div class="sidebar-section">
-      <h3>Tags</h3>
-      <div class="tag-list">
-        {% set tag_taxonomy = get_taxonomy(kind="tags") %}
-        {% for tag in tag_taxonomy.items %}
-        {% if term and term.name == tag.name %}
-        <a href="/blog/" class="tag active">
-          {{ tag.name }} ({{ tag.pages | length }})
-        </a>
-        {% else %}
-        <a href="/tags/{{ tag.slug }}/" class="tag">
-          {{ tag.name }} ({{ tag.pages | length }})
-        </a>
-        {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-
     <div class="sidebar-section">
       <h3>Series</h3>
       <div class="series-list">
@@ -35,6 +17,24 @@
         {% else %}
         <a href="/series/{{ serie.slug }}/" class="series">
           {{ serie.name }}
+        </a>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Tags</h3>
+      <div class="tag-list">
+        {% set tag_taxonomy = get_taxonomy(kind="tags") %}
+        {% for tag in tag_taxonomy.items %}
+        {% if term and term.name == tag.name %}
+        <a href="/blog/" class="tag active">
+          {{ tag.name }} ({{ tag.pages | length }})
+        </a>
+        {% else %}
+        <a href="/tags/{{ tag.slug }}/" class="tag">
+          {{ tag.name }} ({{ tag.pages | length }})
         </a>
         {% endif %}
         {% endfor %}

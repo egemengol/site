@@ -1,110 +1,105 @@
-@import "variables";
-@import "base";
-
-// Single blog post styles
-.blog-post {
+// Post styles mixin
+@mixin post-styles {
+  // Single blog post styles
+  .blog-post {
     max-width: 800px;
     margin: 0 auto;
-}
+  }
 
-.post-header {
-    /* margin-bottom: $spacing-lg; */
+  .post-header {
     padding-bottom: $spacing-md;
-    /* border-bottom: 1px solid $color-border; */
-}
+  }
 
-.post-header h1 {
+  .post-header h1 {
     margin-bottom: $spacing-sm;
-}
+  }
 
-.post-content {
+  .post-content {
     line-height: 1.7;
     border-top: 1px solid $color-border;
     padding-top: $spacing-md;
-}
+  }
 
-.post-content h2,
-.post-content h3,
-.post-content h4 {
+  .post-content h2,
+  .post-content h3,
+  .post-content h4 {
     margin: $spacing-lg 0 $spacing-md 0;
-    /* border-top: 1px solid $color-border; */
     padding-top: $spacing-md;
-}
+  }
 
-.post-content p {
+  .post-content p {
     margin-bottom: $spacing-md;
-}
+  }
 
-.post-content ul,
-.post-content ol {
+  .post-content ul,
+  .post-content ol {
     margin-bottom: $spacing-md;
     padding-left: $spacing-lg;
-}
+  }
 
-.post-content blockquote {
+  .post-content blockquote {
     border-left: 3px solid $color-border;
     padding-left: $spacing-md;
     margin: $spacing-md 0;
-}
+  }
 
-.post-content code {
+  .post-content code {
     padding: 2px 4px;
     border-radius: 3px;
     font-size: 0.9em;
-}
+  }
 
-// Post tags styling
-.post-tags {
-    /* margin-bottom: $spacing-lg; */
+  // Post tags styling
+  .post-tags {
     padding-bottom: $spacing-md;
-    /* border-bottom: 1px solid $color-border; */
-}
+  }
 
-.post-tags span {
+  .post-tags span {
     margin-right: $spacing-sm;
-}
+  }
 
-.post-tags .tag {
+  .post-tags .tag {
     display: inline-block;
     padding: $spacing-xs;
     color: $color-text;
     text-decoration: none;
     border: 1px solid $color-border;
     margin-right: $spacing-xs;
-}
+  }
 
-.post-tags .tag:hover {
+  .post-tags .tag:hover {
     background: #f5f5f5;
-}
+  }
 
-// Series navigation styling
-.series-navigation {
+  // Series navigation styling
+  .series-navigation {
     margin-top: $spacing-lg;
     padding-top: $spacing-lg;
     border-top: 1px solid $color-border;
-}
+  }
 
-.series-navigation h3 {
+  .series-navigation h3 {
     margin-bottom: $spacing-md;
     text-align: center;
-}
+  }
 
-.series-nav-buttons {
+  .series-nav-buttons {
     display: flex;
     justify-content: space-between;
     margin-bottom: $spacing-md;
-}
+  }
 
-.nav-button {
+  .nav-button {
     flex: 1;
-}
+  }
 
-.nav-button.next {
+  .nav-button.next {
     text-align: right;
-}
+  }
 
-.series-overview {
+  .series-overview {
     text-align: center;
     margin-top: $spacing-md;
     padding-top: $spacing-md;
+  }
 }
