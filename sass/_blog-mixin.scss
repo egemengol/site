@@ -11,13 +11,16 @@
         display: grid;
         grid-template-columns: $sidebar-width 1fr;
         gap: $spacing-lg;
-        width: $max-width;
-        max-width: 100vw;
+        width: 100%;
+        max-width: calc($max-width - 2rem);
         margin: 0 auto;
+        padding: 0 $spacing-sm;
+        box-sizing: border-box;
     }
 
     .blog-sidebar {
         width: $sidebar-width;
+        overflow-wrap: break-word;
     }
 
     .sidebar-section {
@@ -38,6 +41,9 @@
     .blog-posts {
         min-width: 0;
         overflow-wrap: break-word;
+        overflow-x: hidden;
+        word-break: break-word;
+        hyphens: auto;
     }
 
     // Blog listing page h1 styling
@@ -135,5 +141,65 @@
     .post-preview p {
         color: $color-text-muted;
         line-height: $line-height-base;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    // Mobile responsiveness
+    @media (max-width: 768px) {
+        .blog-layout {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+            gap: $spacing-md;
+            padding: 0 $spacing-sm;
+            max-width: calc(100vw - 2rem);
+        }
+
+        .blog-sidebar {
+            width: 100%;
+            order: 2;
+            margin-top: $spacing-lg;
+            padding-top: $spacing-lg;
+            border-top: 1px solid $color-border;
+        }
+
+        .blog-posts {
+            order: 1;
+        }
+
+        .sidebar-section {
+            margin-bottom: $spacing-md;
+        }
+
+        .tag-list,
+        .series-list {
+            gap: ($spacing-xs * 0.7);
+        }
+
+        .tag, .series {
+            font-size: 0.85rem;
+            padding: ($spacing-xs * 0.5) ($spacing-sm * 0.8);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .blog-layout {
+            padding: 0 $spacing-xs;
+            max-width: calc(100vw - 1rem);
+        }
+
+        .blog-posts h1 {
+            font-size: 1.6rem;
+        }
+
+        .post-preview h2 {
+            font-size: 1.3rem;
+        }
+
+        .tag, .series {
+            font-size: 0.8rem;
+            padding: ($spacing-xs * 0.4) ($spacing-sm * 0.6);
+        }
     }
 }

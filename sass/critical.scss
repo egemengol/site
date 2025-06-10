@@ -1,2 +1,31 @@
 @import "variables";
 @import "base";
+
+// Code blocks - simple and effective
+code, pre {
+    font-family: $font-family-code !important;
+    font-size: 0.9em;
+}
+
+// Inline code
+code {
+    padding: 2px 4px;
+}
+
+// Code blocks
+pre {
+    padding: $spacing-sm;
+    overflow-x: auto;
+    line-height: 1.4;
+}
+
+// Nested code in pre blocks
+pre code {
+    padding: 0;
+}
+
+// Force monospace on Zola syntax highlighting
+pre[data-lang], pre[data-lang] code,
+.highlight, .highlight code, .highlight pre {
+    font-family: $font-family-code !important;
+}

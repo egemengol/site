@@ -4,6 +4,9 @@
   .blog-post {
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 $spacing-sm;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .post-header {
@@ -12,21 +15,24 @@
 
   .post-header h1 {
     margin-bottom: $spacing-sm;
+    word-wrap: break-word;
   }
 
   .post-content {
     line-height: $line-height-base;
     border-top: 1px solid $color-border;
     padding-top: $spacing-md;
+    overflow-x: auto;
   }
 
   .post-content h2,
   .post-content h3,
   .post-content h4 {
     padding-top: $spacing-md;
+    word-wrap: break-word;
   }
 
-  // Post tags styling
+  // Post tags styling - show/hide based on screen size
   .post-tags {
     padding-bottom: $spacing-md;
   }
@@ -37,7 +43,10 @@
 
   .post-tags .tag {
     margin-right: $spacing-xs;
+    margin-bottom: $spacing-xs;
   }
+
+
 
   // Series navigation styling
   .series-navigation {
@@ -49,6 +58,7 @@
   .series-navigation h3 {
     margin-bottom: $spacing-md;
     text-align: center;
+    word-wrap: break-word;
   }
 
   .series-nav-buttons {
@@ -68,5 +78,60 @@
     margin-left: auto;
   }
 
+  // Mobile styles
+  @media (max-width: 768px) {
+    .blog-post {
+      padding: 0 $spacing-xs;
+    }
 
+
+
+    // Stack series navigation buttons vertically
+    .series-nav-buttons {
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+
+    .nav-button {
+      flex: 1;
+      max-width: 100%;
+    }
+
+    .nav-button.next {
+      margin-left: 0;
+    }
+
+    // Smaller font sizes for mobile
+    .post-header h1 {
+      font-size: 1.6rem;
+    }
+
+    .post-content {
+      font-size: 1.1rem;
+    }
+
+    .post-tags .tag {
+      font-size: 0.85rem;
+      padding: ($spacing-xs * 0.5) ($spacing-sm * 0.8);
+    }
+  }
+
+  // Very small screens
+  @media (max-width: 480px) {
+    .blog-post {
+      padding: 0 ($spacing-xs * 0.5);
+    }
+
+    .post-header h1 {
+      font-size: 1.4rem;
+    }
+
+    .post-content {
+      font-size: 1rem;
+    }
+
+    .series-navigation h3 {
+      font-size: 1.2rem;
+    }
+  }
 }

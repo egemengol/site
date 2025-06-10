@@ -25,17 +25,7 @@
     text-decoration: underline;
   }
 
-  // Code elements - minimal styling
-  code, pre {
-    font-family: $font-family-code;
-    color: $color-text;
-    padding: 2px 4px;
-  }
-
-  pre {
-    padding: $spacing-sm;
-    overflow-x: auto;
-  }
+  // Code styling handled in critical.scss
 
   // Lists
   ul, ol {

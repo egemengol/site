@@ -5,12 +5,18 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: $font-family-primary;
     font-size: $font-size-base;
     line-height: $line-height-base;
     color: $color-text;
     background: $color-bg;
+    overflow-x: hidden;
+    word-wrap: break-word;
 }
 
 // Critical header layout only - consistent height
@@ -20,14 +26,36 @@ body {
     align-items: center;
     padding: $spacing-sm $spacing-md;
     border-bottom: 1px solid $color-border;
-    height: 72px; // Fixed height for consistency
+    min-height: 72px; // Minimum height for consistency
 }
 
 .site-header nav {
     display: flex;
     gap: $spacing-md;
     align-items: center;
-    height: 100%; // Ensure nav takes full header height
+    height: 40px; // Fixed height for nav elements
+}
+
+.site-header nav a {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    box-sizing: border-box;
+    font-family: $font-family-primary;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: $color-text;
+    font-weight: 500;
+    gap: $spacing-xs;
+}
+
+.site-header nav a:hover {
+    color: $color-accent;
+    background: $color-hover-bg;
+    text-decoration: none;
 }
 
 .logo-link img {
@@ -37,11 +65,22 @@ body {
     flex-shrink: 0;
 }
 
+.site-header nav a:first-child {
+    height: 40px;
+    padding: $spacing-xs $spacing-sm;
+}
+
 .header-controls {
     display: flex;
     align-items: center;
     gap: $spacing-sm;
-    height: 100%; // Ensure controls take full header height
+    height: 40px; // Fixed height to match nav
+}
+
+.header-controls > * {
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
 // Basic main layout
@@ -49,8 +88,170 @@ main {
     max-width: $max-width;
     margin: 0 auto;
     padding: $spacing-lg;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .content {
     width: 100%;
+    overflow-x: hidden;
+}
+
+// Code font handled in critical.scss
+
+// Large tablets - slightly smaller font
+@media (max-width: 1200px) {
+    .site-header nav a {
+        font-size: 1.1rem;
+    }
+}
+
+// Medium tablets - more reduction
+@media (max-width: 1024px) {
+    .site-header nav a {
+        font-size: 1.0rem;
+    }
+}
+
+// Small tablets - further reduction
+@media (max-width: 900px) {
+    .site-header nav a {
+        font-size: 0.95rem;
+    }
+}
+
+// Mobile responsiveness - wrap only when really needed
+@media (max-width: 768px) {
+    .site-header {
+        padding: $spacing-sm;
+        min-height: 60px;
+        flex-wrap: wrap;
+        gap: $spacing-sm;
+    }
+
+    .site-header nav {
+        gap: $spacing-sm;
+        flex-wrap: wrap;
+        height: 36px;
+    }
+
+    .site-header nav a {
+        font-size: 0.95rem;
+        padding: ($spacing-xs * 0.7) ($spacing-sm * 0.8);
+        height: 36px;
+    }
+    
+
+
+    .site-header nav a:first-child {
+        height: 36px;
+        padding: ($spacing-xs * 0.7) ($spacing-sm * 0.8);
+    }
+    
+
+
+    .header-controls {
+        gap: ($spacing-xs * 0.7);
+        height: 36px;
+    }
+
+    .header-controls > * {
+        height: 36px;
+    }
+
+    .search-container input {
+        width: 140px;
+        font-size: 0.95rem;
+        height: 36px;
+    }
+
+    main {
+        padding: $spacing-md $spacing-sm;
+    }
+}
+
+// Small screens - final reduction before wrapping
+@media (max-width: 700px) {
+    .site-header nav a {
+        font-size: 0.9rem;
+        padding: ($spacing-xs * 0.8) ($spacing-sm * 0.9);
+    }
+    
+
+
+    .search-container input {
+        width: 120px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .site-header nav a {
+        font-size: 0.85rem;
+        padding: ($spacing-xs * 0.7) ($spacing-sm * 0.8);
+    }
+    
+
+
+    .search-container input {
+        width: 110px;
+        font-size: 0.85rem;
+    }
+}
+
+// Very small screens - finally wrap to two lines
+@media (max-width: 480px) {
+    .site-header {
+        padding: ($spacing-sm * 0.8);
+        flex-direction: column;
+        align-items: stretch;
+        gap: $spacing-xs;
+    }
+
+    .site-header nav {
+        justify-content: center;
+        order: 1;
+        height: 32px;
+    }
+
+    .site-header nav a {
+        font-size: 0.8rem;
+        height: 32px;
+        padding: ($spacing-xs * 0.5) ($spacing-sm * 0.6);
+    }
+    
+
+
+    .site-header nav a:first-child {
+        height: 32px;
+        padding: ($spacing-xs * 0.5) ($spacing-sm * 0.6);
+    }
+    
+
+
+    .logo-link {
+        width: 32px;
+        height: 32px;
+    }
+
+    .header-controls {
+        justify-content: flex-end;
+        order: 2;
+        height: 32px;
+    }
+
+    .header-controls > * {
+        height: 32px;
+    }
+
+    .search-container input {
+        width: 110px;
+        font-size: 0.85rem;
+        height: 32px;
+        padding: ($spacing-xs * 0.4);
+    }
+
+    main {
+        padding: $spacing-sm ($spacing-xs * 0.8);
+    }
 }

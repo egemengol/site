@@ -4,6 +4,8 @@
     max-width: $max-width;
     margin: 0 auto;
     padding: $spacing-lg;
+    overflow-x: hidden;
+    word-wrap: break-word;
   }
 
   .homepage h1 {
@@ -13,5 +15,35 @@
   .homepage h2 {
     margin-top: $spacing-lg;
     margin-bottom: $spacing-md;
+  }
+
+  // Mobile responsiveness
+  @media (max-width: 768px) {
+    .homepage {
+      padding: $spacing-md $spacing-sm;
+    }
+
+    .homepage h1 {
+      font-size: 1.8rem;
+    }
+
+    .homepage h2 {
+      font-size: 1.4rem;
+      margin-top: $spacing-md;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .homepage {
+      padding: $spacing-sm ($spacing-xs * 0.8);
+    }
+
+    .homepage h1 {
+      font-size: 1.6rem;
+    }
+
+    .homepage h2 {
+      font-size: 1.2rem;
+    }
   }
 }
