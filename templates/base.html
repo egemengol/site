@@ -40,14 +40,13 @@
   </head>
   <body class="{% block page_class %}default{% endblock page_class %}">
     <header class="site-header">
-      <nav>
+      <nav class="navbar">
         <a href="/">
           {% set logo = resize_image(path="logo.png", width=36, height=36) %}
           <img class="logo-link" src="{{ logo.url | replace(from=config.base_url, to="") }}" width="36" height="36" />Home</a>
         <a href="/blog/">Blog</a>
         <!-- <a href="/book/">Book</a> -->
-      </nav>
-      <div class="header-controls">
+        <div class="spacer"></div>
         <div class="search-container">
           <input
             id="search"
@@ -67,7 +66,7 @@
             document.write('<img id="theme-icon" src="' + (isDark ? '/light_mode.svg' : '/dark_mode.svg') + '" alt="' + (isDark ? 'light' : 'dark') + '" width="24" height="24" />');
           </script>
         </button>
-      </div>
+      </nav>
     </header>
     <main>
       <div id="search-results-main" class="search-results" style="display: none;">

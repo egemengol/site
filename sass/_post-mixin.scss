@@ -42,8 +42,8 @@
   }
 
   .post-tags .tag {
-    margin-right: $spacing-xs;
-    margin-bottom: $spacing-xs;
+    margin-right: ($spacing-xs * 0.5);
+    margin-bottom: ($spacing-xs * 0.5);
   }
 
 
@@ -112,7 +112,7 @@
 
     .post-tags .tag {
       font-size: 0.85rem;
-      padding: ($spacing-xs * 0.5) ($spacing-sm * 0.8);
+      padding: ($spacing-xs * 0.5) ($spacing-sm * 0.5);
     }
   }
 

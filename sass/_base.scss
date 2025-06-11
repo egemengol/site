@@ -19,21 +19,21 @@ body {
     word-wrap: break-word;
 }
 
-// Critical header layout only - consistent height
+// Critical header layout only - responsive height
 .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: $spacing-sm $spacing-md;
     border-bottom: 1px solid $color-border;
-    min-height: 72px; // Minimum height for consistency
+    padding: $spacing-sm $spacing-md;
 }
 
-.site-header nav {
+.navbar {
     display: flex;
-    gap: $spacing-md;
     align-items: center;
-    height: 40px; // Fixed height for nav elements
+    gap: $spacing-md;
+    height: 40px;
+}
+
+.spacer {
+    flex: 1;
 }
 
 body .site-header nav a {
@@ -70,17 +70,94 @@ body .site-header nav a:hover {
     padding: $spacing-xs $spacing-sm;
 } */
 
-.header-controls {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-    height: 40px; // Fixed height to match nav
-}
-
-.header-controls > * {
+.search-container,
+.theme-toggle {
     height: 40px;
     display: flex;
     align-items: center;
+}
+
+// Responsive navbar
+@media (max-width: 768px) {
+    .site-header {
+        padding: $spacing-xs $spacing-sm;
+    }
+    
+    .navbar {
+        height: 36px;
+        gap: $spacing-sm;
+    }
+    
+    .navbar a {
+        font-size: 1.1rem !important;
+        padding: ($spacing-xs * 0.75) ($spacing-xs * 1.25) !important;
+        height: 36px !important;
+    }
+    
+    .logo-link {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    .search-container,
+    .theme-toggle {
+        height: 36px;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        gap: $spacing-xs;
+    }
+    
+    .search-container input {
+        width: 140px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 540px) {
+    .site-header {
+        padding: $spacing-xs $spacing-xs;
+    }
+    
+    .navbar {
+        height: 32px;
+        gap: ($spacing-xs * 0.75);
+    }
+    
+    .navbar a {
+        font-size: 1rem !important;
+        padding: ($spacing-xs * 0.5) $spacing-xs !important;
+        height: 32px !important;
+    }
+    
+    .logo-link {
+        width: 28px !important;
+        height: 28px !important;
+    }
+    
+    .search-container,
+    .theme-toggle {
+        height: 32px;
+    }
+    
+    .search-container input {
+        width: 120px !important;
+        height: 32px !important;
+        font-size: 0.85rem !important;
+        padding: ($spacing-xs * 0.5) !important;
+    }
+    
+    .theme-toggle {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    .theme-toggle img {
+        width: 20px !important;
+        height: 20px !important;
+    }
 }
 
 // Basic main layout
@@ -99,159 +176,4 @@ main {
 
 // Code font handled in critical.scss
 
-// Large tablets - slightly smaller font
-@media (max-width: 1200px) {
-    body .site-header nav a {
-        font-size: 1.1rem;
-    }
-}
 
-// Medium tablets - more reduction
-@media (max-width: 1024px) {
-    body .site-header nav a {
-        font-size: 1.0rem;
-    }
-}
-
-// Small tablets - further reduction
-@media (max-width: 900px) {
-    body .site-header nav a {
-        font-size: 0.95rem;
-    }
-}
-
-// Mobile responsiveness - wrap only when really needed
-@media (max-width: 768px) {
-    .site-header {
-        padding: $spacing-sm;
-        min-height: 60px;
-        flex-wrap: wrap;
-        gap: $spacing-sm;
-    }
-
-    .site-header nav {
-        gap: $spacing-sm;
-        flex-wrap: wrap;
-        height: 36px;
-    }
-
-    body .site-header nav a {
-        font-size: 0.95rem;
-        padding: ($spacing-xs * 0.7) ($spacing-sm * 0.8);
-        height: 36px;
-    }
-
-
-
-    body .site-header nav a:first-child {
-        height: 36px;
-        padding: ($spacing-xs * 0.7) ($spacing-sm * 0.8);
-    }
-
-
-
-    .header-controls {
-        gap: ($spacing-xs * 0.7);
-        height: 36px;
-    }
-
-    .header-controls > * {
-        height: 36px;
-    }
-
-    .search-container input {
-        width: 140px;
-        font-size: 0.95rem;
-        height: 36px;
-    }
-
-    main {
-        padding: $spacing-md $spacing-sm;
-    }
-}
-
-// Small screens - final reduction before wrapping
-@media (max-width: 700px) {
-    body .site-header nav a {
-        font-size: 0.9rem;
-        padding: ($spacing-xs * 0.8) ($spacing-sm * 0.9);
-    }
-
-
-
-    .search-container input {
-        width: 120px;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 600px) {
-    body .site-header nav a {
-        font-size: 0.85rem;
-        padding: ($spacing-xs * 0.7) ($spacing-sm * 0.8);
-    }
-
-
-
-    .search-container input {
-        width: 110px;
-        font-size: 0.85rem;
-    }
-}
-
-// Very small screens - finally wrap to two lines
-@media (max-width: 480px) {
-    .site-header {
-        padding: ($spacing-sm * 0.8);
-        flex-direction: column;
-        align-items: stretch;
-        gap: $spacing-xs;
-    }
-
-    .site-header nav {
-        justify-content: center;
-        order: 1;
-        height: 32px;
-    }
-
-    body .site-header nav a {
-        font-size: 0.8rem;
-        height: 32px;
-        padding: ($spacing-xs * 0.5) ($spacing-sm * 0.6);
-    }
-
-
-
-    body .site-header nav a:first-child {
-        height: 32px;
-        padding: ($spacing-xs * 0.5) ($spacing-sm * 0.6);
-    }
-
-
-
-    .logo-link {
-        width: 32px;
-        height: 32px;
-    }
-
-    .header-controls {
-        justify-content: flex-end;
-        order: 2;
-        height: 32px;
-    }
-
-    .header-controls > * {
-        height: 32px;
-    }
-
-    .search-container input {
-        width: 110px;
-        font-size: 0.85rem;
-        height: 32px;
-        padding: ($spacing-xs * 0.4);
-    }
-
-    main {
-        padding: $spacing-sm ($spacing-xs * 0.8);
-    }
-}

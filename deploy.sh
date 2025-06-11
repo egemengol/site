@@ -14,7 +14,7 @@ echo "Building Zola site..."
 cd "$ZOLA_PROJECT_DIR"
 # Clear old files if necessary, be CAREFUL
 # rm -rf "${WEB_ROOT_PUBLIC:?}"/* # The :? ensures variable is set, preventing accidental "rm -rf /*"
-zola build --output-dir "$WEB_ROOT_PUBLIC"
+zola build --output-dir "$WEB_ROOT_PUBLIC" --force
 
 echo "Setting ownership and permissions for Nginx..."
 chown -R "$WEB_USER:$WEB_USER" "$WEB_ROOT_PUBLIC"
