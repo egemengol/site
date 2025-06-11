@@ -1,6 +1,6 @@
 +++
 title = "ZK-Rollups Reading List"
-date = 2023-10-27
+date = 2023-10-28
 description = "A curated list of articles and resources for understanding ZK-Rollups, their economic implications, and their significance in scaling Ethereum as Layer 2 solutions."
 [taxonomies]
 tags = ["zk-rollups", "ethereum", "scaling", "l2", "reading-list"]
