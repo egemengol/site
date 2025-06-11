@@ -1,21 +1,17 @@
 // Common styles shared across all page types
 @mixin common-styles {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $color-text;
+
   // Typography with larger font size
   h1, h2, h3, h4, h5, h6 {
-    font-family: $font-family-primary;
     font-weight: 700;
-    color: $color-text;
-  }
-
-  p, li, span, div, blockquote {
-    font-family: $font-family-primary;
-    font-size: $font-size-base;
-    color: $color-text;
   }
 
   // Links
   a {
-    font-family: $font-family-primary;
     color: $color-accent;
     text-decoration: none;
   }
@@ -29,14 +25,12 @@
 
   // Lists
   ul, ol {
-    font-family: $font-family-primary;
     margin-bottom: $spacing-md;
     padding-left: $spacing-lg;
   }
 
   // Blockquotes
   blockquote {
-    font-family: $font-family-primary;
     border-left: 3px solid $color-border;
     padding-left: $spacing-md;
     margin: $spacing-md 0;
@@ -46,7 +40,6 @@
   // Paragraphs
   p {
     margin-bottom: $spacing-md;
-    line-height: $line-height-base;
   }
 
   // Content headings spacing
@@ -56,10 +49,8 @@
 
   // Tag/button common styles - better sizing
   .tag, .series {
-    font-family: $font-family-primary;
     display: inline-block;
     padding: ($spacing-xs * 0.6) ($spacing-sm * 1.2);
-    color: $color-text;
     text-decoration: none;
     border: 1px solid $color-border;
     border-radius: 6px;
@@ -81,13 +72,11 @@
 
   // Navigation buttons - button style with text wrapping
   .nav-button a {
-    font-family: $font-family-primary;
     display: block;
     padding: ($spacing-xs * 0.8) $spacing-sm;
     background: $color-bg;
     border: 1px solid $color-border;
     border-radius: 6px;
-    color: $color-text;
     text-decoration: none;
     transition: all 0.2s ease;
     width: 100%;
@@ -118,7 +107,6 @@
 
   // Post meta text
   .post-meta {
-    font-family: $font-family-primary;
     color: $color-text-muted;
     font-size: 0.95rem;
   }

@@ -26,6 +26,8 @@ pre code {
 
 // Force monospace on Zola syntax highlighting
 pre[data-lang], pre[data-lang] code,
-.highlight, .highlight code, .highlight pre {
+.highlight, .highlight code, .highlight pre,
+/* Add this line to target spans inside code blocks more specifically */
+pre[data-lang] code span, .highlight code span {
     font-family: $font-family-code !important;
 }
