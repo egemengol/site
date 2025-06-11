@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xml:lang="{{ lang | default(value=config.default_language) }}">
+    <channel>
+        <title>
+            {{- config.title | default(value="") | escape_xml -}}
+            {%- if term %} - {{ term.name | default(value="") | escape_xml }}
+            {%- elif section.title %} - {{ section.title | default(value="") | escape_xml }}
+            {%- endif -%}
+        </title>
+        <link>
+            {%- if section -%}
+            {{ section.permalink | default(value="") | escape_xml | safe }}
+            {%- else -%}
+            {{ config.base_url | default(value="") | escape_xml | safe }}
+            {%- endif -%}
+        </link>
+        <description>{{ config.description | default(value="") | escape_xml }}</description>
+        <generator>Zola</generator>
+        <language>{{ lang | default(value=config.default_language) }}</language>
+        {%- if feed_url %}
+        <atom:link href="{{ feed_url | default(value="") | escape_xml | safe }}" rel="self" type="application/rss+xml"/>
+        {%- endif %}
+        <lastBuildDate>{{ last_updated | date(format="%a, %d %b %Y %H:%M:%S %z") }}</lastBuildDate>
+        {%- for page in pages %}
+        <item>
+            <title>{{ page.title | default(value="") | escape_xml }}</title>
+            <pubDate>{{ page.date | date(format="%a, %d %b %Y %H:%M:%S %z") }}</pubDate>
+            <link>{{ page.permalink | default(value="") | escape_xml | safe }}</link>
+            <guid isPermaLink="true">{{ page.permalink | default(value="") | escape_xml | safe }}</guid>
+            {%- if page.authors %}
+                {%- if page.authors | length > 0 %}
+            <author>{{ page.authors[0] | default(value="") | escape_xml }}</author>
+                {%- elif config.author %}
+            <author>{{ config.author | default(value="") | escape_xml }}</author>
+                {%- endif %}
+            {%- elif config.author %}
+            <author>{{ config.author | default(value="") | escape_xml }}</author>
+            {%- endif %}
+            <description>{{ page.description | default(value=page.summary) | default(value="") | escape_xml }}</description>
+        </item>
+        {%- endfor %}
+    </channel>
+</rss>

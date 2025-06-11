@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ lang | default(value=config.default_language) }}">
+    <title>
+        {{- config.title | default(value="") | escape_xml -}}
+        {%- if term %} - {{ term.name | default(value="") | escape_xml }}
+        {%- elif section.title %} - {{ section.title | default(value="") | escape_xml }}
+        {%- endif -%}
+    </title>
+    {%- if config.description %}
+    <subtitle>{{ config.description | default(value="") | escape_xml }}</subtitle>
+    {%- endif %}
+    <link href="{{ feed_url | default(value="") | escape_xml | safe }}" rel="self" type="application/atom+xml"/>
+    <link href="{{ config.base_url | default(value="") | escape_xml | safe }}"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>{{ last_updated | date(format="%+") }}</updated>
+    <id>{{ config.base_url | default(value="") | escape_xml | safe }}</id>
+    {%- for page in pages %}
+    <entry>
+        <title>{{ page.title | default(value="") | escape_xml }}</title>
+        <published>{{ page.date | date(format="%+") }}</published>
+        <updated>{{ page.updated | default(value=page.date) | date(format="%+") }}</updated>
+        {%- if page.authors %}
+            {%- for author_name in page.authors %}
+        <author>
+            <name>{{ author_name | default(value="") | escape_xml }}</name>
+        </author>
+            {%- endfor %}
+        {%- elif config.author %}
+        <author>
+            <name>{{ config.author | default(value="") | escape_xml }}</name>
+        </author>
+        {%- endif %}
+        <link href="{{ page.permalink | default(value="") | escape_xml | safe }}" rel="alternate" type="text/html"/>
+        <id>{{ page.permalink | default(value="") | escape_xml | safe }}</id>
+        <summary type="text">{{ page.description | default(value=page.summary) | default(value="") | escape_xml }}</summary>
+    </entry>
+    {%- endfor %}
+</feed>
