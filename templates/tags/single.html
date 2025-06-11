@@ -6,8 +6,14 @@
 {% block blog_content %}
 <h1>Posts tagged "{{ term.name }}"</h1>
 
-{% set sorted_pages = term.pages | sort(attribute="date") | reverse %}
-{% for page in sorted_pages %}
-{{ macros::post_preview(page=page) }}
-{% endfor %}
+{% if paginator %}
+  {% for page in paginator.pages %}
+  {{ macros::post_preview(page=page) }}
+  {% endfor %}
+{% else %}
+  {% set sorted_pages = term.pages | sort(attribute="date") | reverse %}
+  {% for page in sorted_pages %}
+  {{ macros::post_preview(page=page) }}
+  {% endfor %}
+{% endif %}
 {% endblock blog_content %}

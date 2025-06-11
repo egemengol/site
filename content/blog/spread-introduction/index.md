@@ -1,10 +1,10 @@
 +++
 title = "Introduction to Spread"
 date = 2024-03-08
-description = "An introduction to Spread, a lightweight and ergonomic PubSub/EventBus library for Golang applications"
+description = "An introduction to Spread, a lightweight, ergonomic, and type-safe in-memory PubSub/EventBus library for Golang applications, built with channels."
 [taxonomies]
 series = ["Spread"]
-tags = ["golang", "pubsub", "eventbus"]
+tags = ["golang", "pubsub", "library", "eventbus"]
 [extra]
 series_index = 1
 hero_image = "./spread-cut.jpeg"

@@ -1,0 +1,54 @@
+{% macro pagination(paginator) %}
+{% if paginator.number_pagers > 1 %}
+<nav class="pagination" aria-label="Pagination Navigation">
+  <div class="pagination-info">
+    <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+    <span class="pagination-count">({{ paginator.total_pages }} posts total)</span>
+  </div>
+  
+  <div class="pagination-controls">
+    {% if paginator.previous %}
+      <a href="{{ paginator.previous }}" class="pagination-btn pagination-prev" rel="prev">
+        ← Previous
+      </a>
+    {% else %}
+      <span class="pagination-btn pagination-prev disabled">← Previous</span>
+    {% endif %}
+
+    <div class="pagination-numbers">
+      {% if paginator.current_index > 4 %}
+        <a href="{{ paginator.first }}" class="pagination-number">1</a>
+        <span class="pagination-ellipsis">…</span>
+      {% endif %}
+
+      {% for page_num in range(start=1, end=paginator.number_pagers + 1) %}
+        {% if page_num >= paginator.current_index - 3 and page_num <= paginator.current_index + 3 %}
+          {% if page_num == paginator.current_index %}
+            <span class="pagination-number current">{{ page_num }}</span>
+          {% else %}
+            {% if page_num == 1 %}
+              <a href="{{ paginator.first }}" class="pagination-number">{{ page_num }}</a>
+            {% else %}
+              <a href="{{ paginator.base_url }}{{ page_num }}/" class="pagination-number">{{ page_num }}</a>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if paginator.current_index < paginator.number_pagers - 3 %}
+        <span class="pagination-ellipsis">…</span>
+        <a href="{{ paginator.last }}" class="pagination-number">{{ paginator.number_pagers }}</a>
+      {% endif %}
+    </div>
+
+    {% if paginator.next %}
+      <a href="{{ paginator.next }}" class="pagination-btn pagination-next" rel="next">
+        Next →
+      </a>
+    {% else %}
+      <span class="pagination-btn pagination-next disabled">Next →</span>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}
+{% endmacro %}

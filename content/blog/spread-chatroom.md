@@ -1,10 +1,10 @@
 +++
 title = "Building a Chatroom"
 date = 2024-03-09
-description = "Building a websocket based chatroom, using Spread the PubSub library."
+description = "Learn how to build a WebSocket-based chatroom in Golang using the Spread library for clean and efficient PubSub message handling."
 [taxonomies]
 series = ["Spread"]
-tags = ["golang", "websocket", "pubsub", "eventbus", "chatroom"]
+tags = ["golang", "websocket", "pubsub", "chatroom", "tutorial"]
 [extra]
 series_index = 2
 +++

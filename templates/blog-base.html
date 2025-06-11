@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros/pagination.html" as pagination_macros %}
 
 {% block page_class %}blog{% endblock page_class %}
 
@@ -43,9 +44,17 @@
   </aside>
 
   <section class="blog-posts">
-    {% block blog_content %}
-    <!-- Blog listing content goes here -->
-    {% endblock blog_content %}
+    <div class="blog-posts-content">
+      {% block blog_content %}
+      <!-- Blog listing content goes here -->
+      {% endblock blog_content %}
+    </div>
+
+    {% if paginator %}
+    <div class="blog-posts-pagination">
+      {{ pagination_macros::pagination(paginator=paginator) }}
+    </div>
+    {% endif %}
   </section>
 </div>
 {% endblock content %}

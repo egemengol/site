@@ -1,9 +1,12 @@
 +++
 title = "Overview - Mina"
 date = 2022-03-27
-description = ""
+description = "An overview of Mina, the world's lightest blockchain that utilizes zero-knowledge technology for 22KB chain verification and supports zkApps for private, efficient smart contracts."
 [taxonomies]
-tags = ["overview", "mina"]
+tags = ["mina", "blockchain", "zero-knowledge", "zkapps"]
+series = ["Zk Overviews"]
+[extra]
+series_index = 1
 +++
 
 # Mina
