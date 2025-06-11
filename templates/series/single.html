@@ -7,7 +7,8 @@
 <h1>{{ term.name }} Series</h1>
 
 {% if paginator %}
-  {% for page in paginator.pages %}
+  {% set sorted_paginated_pages = paginator.pages | sort(attribute="extra.series_index") %}
+  {% for page in sorted_paginated_pages %}
   {{ macros::post_preview(page=page) }}
   {% endfor %}
 {% else %}
