@@ -1,33 +1,25 @@
-# The URL the site will be built for
 base_url = "https://egemengol.com"
-
 title = "Personal website of Egemen Göl"
 author = "Egemen Göl"
 description = "Personal website of Egemen Göl"
 
-# Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
-# Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
 generate_feeds = true
 feed_filenames = ["atom.xml", "rss.xml"]
 
-# Add taxonomies
 taxonomies = [
     { name = "tags", feed = true, paginate_by = 10, list_template = "tags/list.html", single_template = "tags/single.html" },
     { name = "series", feed = true, paginate_by = 10, list_template = "series/list.html", single_template = "series/single.html" },
 ]
 
-
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
+highlight_theme = "gruvbox-dark"
 
 [extra]
-# Put all your custom variables here
 
 [search]
 include_description = true
