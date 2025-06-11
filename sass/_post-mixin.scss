@@ -139,6 +139,62 @@
     }
   }
 
+  // Hint containers
+  .hint-container {
+    position: relative;
+    margin: $spacing-md 0;
+    padding: $spacing-sm $spacing-md;
+    border-radius: 6px;
+    border-left: 4px solid;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hint-container-title {
+    font-weight: 700;
+    margin-bottom: $spacing-xs;
+    font-size: 0.95rem;
+  }
+
+  .hint-content {
+    margin: 0;
+  }
+
+  .hint-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  // Hint container variants
+  .hint-container.tip {
+    background-color: var(--hint-tip-bg);
+    border-left-color: var(--hint-tip-border);
+    color: var(--color-text);
+  }
+
+  .hint-container.warning {
+    background-color: var(--hint-warning-bg);
+    border-left-color: var(--hint-warning-border);
+    color: var(--color-text);
+  }
+
+  .hint-container.info {
+    background-color: var(--hint-info-bg);
+    border-left-color: var(--hint-info-border);
+    color: var(--color-text);
+  }
+
+  .hint-container.important {
+    background-color: var(--hint-important-bg);
+    border-left-color: var(--hint-important-border);
+    color: var(--color-text);
+  }
+
+  .hint-container.note {
+    background-color: var(--hint-note-bg);
+    border-left-color: var(--hint-note-border);
+    color: var(--color-text);
+  }
+
   // Very small screens
   @media (max-width: 480px) {
     .blog-post {
@@ -159,6 +215,16 @@
 
     .series-navigation h3 {
       font-size: 1.2rem;
+    }
+
+    // Smaller hint containers on mobile
+    .hint-container {
+      padding: ($spacing-sm * 0.75) $spacing-sm;
+      margin: $spacing-sm 0;
+    }
+
+    .hint-container-title {
+      font-size: 0.9rem;
     }
   }
 }

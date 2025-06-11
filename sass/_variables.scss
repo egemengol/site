@@ -24,6 +24,23 @@ $font-family-code: 'Source Code Pro', 'SFMono-Regular', Consolas, 'Liberation Mo
     --color-accent: #cc9900;
     --color-accent-hover: #b8860b;
     --color-nav-a: #333333;
+    
+    // Hint container colors
+    --hint-tip-bg: #fef9e7;
+    --hint-tip-border: #e6c466;
+    --hint-tip-text: #997700;
+    --hint-warning-bg: #fff5f5;
+    --hint-warning-border: #fc8181;
+    --hint-warning-text: #c53030;
+    --hint-info-bg: #f7fafc;
+    --hint-info-border: #63b3ed;
+    --hint-info-text: #2b6cb0;
+    --hint-important-bg: #faf5ff;
+    --hint-important-border: #b794f6;
+    --hint-important-text: #805ad5;
+    --hint-note-bg: #fafafa;
+    --hint-note-border: #a0a0a0;
+    --hint-note-text: #666666;
 }
 
 // Dark Theme Colors (dark gray with slight yellow tint)
@@ -36,6 +53,23 @@ $font-family-code: 'Source Code Pro', 'SFMono-Regular', Consolas, 'Liberation Mo
     --color-accent: #ffcc33;
     --color-accent-hover: #ffd700;
     --color-nav-a: #e8e6d3;
+    
+    // Hint container colors
+    --hint-tip-bg: #2b2416;
+    --hint-tip-border: #e6c466;
+    --hint-tip-text: #f7e98e;
+    --hint-warning-bg: #2d1b1b;
+    --hint-warning-border: #fc8181;
+    --hint-warning-text: #fed7d7;
+    --hint-info-bg: #1a252f;
+    --hint-info-border: #63b3ed;
+    --hint-info-text: #bee3f8;
+    --hint-important-bg: #251a2e;
+    --hint-important-border: #b794f6;
+    --hint-important-text: #e9d8fd;
+    --hint-note-bg: #232323;
+    --hint-note-border: #999999;
+    --hint-note-text: #cccccc;
 }
 
 // CSS Custom Properties mapped to SCSS variables for compatibility
