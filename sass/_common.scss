@@ -55,8 +55,8 @@
     margin: $spacing-lg 0 $spacing-md 0;
   }
 
-  // Tag/button common styles - better sizing
-  .tag, .series {
+  // Tag styles - small inline elements
+  .tag {
     display: inline-block;
     padding: ($spacing-xs * 0.6) ($spacing-sm * 0.8);
     text-decoration: none;
@@ -69,20 +69,56 @@
     background: $color-bg;
   }
 
-  .tag:hover, .series:hover {
+  .tag:hover {
     background: $color-hover-bg;
     color: $color-accent;
     text-decoration: none;
     border-color: $color-accent;
   }
 
-  .tag.active, .series.active {
+  .tag.active {
     background: $color-hover-bg;
     color: $color-text;
     border-color: $color-text-muted;
   }
 
-  .tag.active:hover, .series.active:hover {
+  .tag.active:hover {
+    background: $color-hover-bg;
+    color: $color-accent;
+    border-color: $color-accent;
+  }
+
+  // Series styles - larger card-like elements
+  .series {
+    display: block;
+    width: 100%;
+    padding: ($spacing-xs * 0.8) $spacing-sm;
+    text-decoration: none;
+    border: 1px solid $color-border;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: $color-text;
+    background: $color-bg;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  .series:hover {
+    background: $color-hover-bg;
+    color: $color-accent;
+    text-decoration: none;
+    border-color: $color-accent;
+  }
+
+  .series.active {
+    background: $color-hover-bg;
+    color: $color-text;
+    border-color: $color-text-muted;
+  }
+
+  .series.active:hover {
     background: $color-hover-bg;
     color: $color-accent;
     border-color: $color-accent;

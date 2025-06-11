@@ -31,11 +31,16 @@
         margin-bottom: $spacing-sm;
     }
 
-    .tag-list,
-    .series-list {
+    .tag-list {
         display: flex;
         flex-wrap: wrap;
         gap: $spacing-xs;
+    }
+
+    .series-list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-sm * 0.6;
     }
 
     .blog-posts {
@@ -288,8 +293,7 @@
             margin-bottom: $spacing-md;
         }
 
-        .tag-list,
-        .series-list {
+        .tag-list {
             gap: ($spacing-xs * 0.7);
         }
 
