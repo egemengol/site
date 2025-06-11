@@ -23,6 +23,14 @@
 
   // Code styling handled in critical.scss
 
+  // Horizontal rule
+  hr {
+    margin: $spacing-md 0;
+    border: none;
+    height: 1px;
+    background-color: $color-border; // Or another appropriate variable
+  }
+
   // Lists
   ul, ol {
     margin-bottom: $spacing-md;

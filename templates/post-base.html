@@ -4,6 +4,13 @@
 
 {% block content %}
 <article class="blog-post">
+  <!-- Hero Image -->
+  {% if page.extra.hero_image %}
+  <div class="post-hero">
+    <img src="{{ page.extra.hero_image }}" alt="{{ page.title }}">
+  </div>
+  {% endif %}
+
   <header class="post-header">
     {% block post_header %}{% endblock post_header %}
   </header>

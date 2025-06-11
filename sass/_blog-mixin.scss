@@ -138,6 +138,23 @@
         margin-bottom: $spacing-sm;
     }
 
+    .post-series {
+        color: $color-text;
+        font-weight: 400;
+        font-size: 0.9rem;
+        margin-bottom: $spacing-xs;
+    }
+
+    .post-series a {
+        color: $color-accent;
+        text-decoration: none;
+    }
+
+    .post-series a:hover {
+        color: $color-accent-hover;
+        text-decoration: underline;
+    }
+
     .post-preview p {
         color: $color-text-muted;
         line-height: $line-height-base;
