@@ -1,65 +1,68 @@
 +++
-title = "Welcome to My Blog"
-description = "A modern blog with dark/light theme support"
+title = "Egemen Göl"
+description = "Developer, builder, and creator of useful things. Welcome to my corner of the internet."
 +++
 
-# Welcome to My Blog
+<div class="hero-section">
+  <div class="hero-content">
+    <img src="/logo.png" alt="Egemen Göl" class="hero-logo" width="80" height="80" />
+    <div class="hero-text">
+      <h1>I'm Egemen</h1>
+      <p class="hero-subtitle">Developer, builder, and creator of useful things. Welcome to my corner of the internet.</p>
+    </div>
+  </div>
+</div>
 
-This is a modern Zola-powered blog with beautiful dark and light theme support. Click the theme toggle button in the header to switch between modes!
+## About Me
 
-## Features
-
-- **Dark/Light Theme Toggle**: Seamlessly switch between themes with persistent preferences
-- **Responsive Design**: Looks great on all devices
-- **Modern Typography**: Clean, readable fonts optimized for both themes
-- **Fast Performance**: Built with Zola for lightning-fast static site generation
-
-## Theme Showcase
-
-### Code Blocks
-
-Here's how code looks in both themes:
-
-```rust
-fn main() {
-    println!("Hello, world!");
-    let theme = if dark_mode {
-        "dark"
-    } else {
-        "light"
-    };
-    println!("Current theme: {}", theme);
-}
-```
-
-### Blockquotes
-
-> This is a blockquote that demonstrates how quoted text appears in both light and dark themes. It maintains excellent readability while adapting to your preferred color scheme.
-
-### Lists
-
-**Light Theme Features:**
-- Clean white background
-- Dark text for optimal readability
-- Subtle shadows and borders
-- Professional appearance
-
-**Dark Theme Features:**
-- Easy on the eyes in low light
-- Reduced eye strain
-- Modern dark aesthetic
-- Perfect for night reading
-
-### Links and Typography
-
-Visit my [blog](/blog) to read more articles, or check out my [book](/book) section for longer-form content.
-
-The theme system automatically:
-- Saves your preference in localStorage
-- Respects your system's preferred color scheme
-- Provides smooth transitions between themes
-- Maintains accessibility standards
+Driven by a fascination with transforming ambitious ideas into tangible realities at the cutting edge of technology, my work often involves navigating complex domains. This journey has spanned architecting resilient backend infrastructures and pioneering in the Web3 space, to exploring the creative horizons of generative AI. With ZkPassport, I'm currently focused on shaping the future of digital identity through privacy-enhancing technologies, ensuring that intricate concepts translate into secure and intuitive solutions. My goal is always to build not just functional systems, but also to make the 'why' and 'how' behind them understandable and compelling.
 
 ---
 
-*Built with ❤️ using [Zola](https://www.getzola.org/) and modern CSS custom properties.*
+A deep-seated interest in crafting tools and platforms that deliver genuine value guides my approach to technology. This involves making advanced concepts approachable, whether engaging with foundational backend systems, the evolving paradigms of Web3, or the innovative applications of generative AI. A key part of my current endeavor with ZkPassport is to articulate and build a new vision for digital trust, making sophisticated cryptographic principles accessible. The challenge of not only solving complex problems but also of clearly conveying the potential of new technological frontiers is what motivates me.
+
+---
+
+My journey in technology is propelled by a desire to build purposeful solutions that resonate. This has led to immersion in diverse areas such as foundational backend development, the decentralized ecosystems of Web3, and the creative applications of generative AI. With ZkPassport, my current focus is on building a more trustworthy digital future by making privacy-centric identity solutions not only powerful but also clearly understood. For me, developing impactful technology goes hand-in-hand with ensuring its principles and benefits are clear to all who engage with it.
+
+---
+
+Exploring the frontiers of technology and translating those discoveries into meaningful applications is a core driver for me. From the intricacies of backend architecture to the dynamic world of Web3 and the creative possibilities of generative AI, I seek to understand and innovate. My work on ZkPassport, for instance, involves not just engineering privacy-preserving digital identity, but also articulating its value and making complex ideas resonate. The aim is always to contribute to a shared understanding that empowers further innovation and adoption.
+
+---
+
+You can find more of my work on <a href="https://github.com/egemengol" target="_blank">GitHub</a>, connect with me on <a href="https://linkedin.com/in/egemen-gol/" target="_blank">LinkedIn</a>, or reach out via <a href="mailto:egemengol@gmail.com">email</a>.
+
+
+## Spotlight
+
+Check out my latest series on **[Spread](/series/spread/)** - an ergonomic PubSub/EventBus library for Golang that I built to solve the gap between heavyweight message brokers and custom channel implementations.
+
+
+## Online Things I've Built
+
+<div class="projects-showcase">
+  <div class="project-row">
+    <div class="project-image">
+      <a href="https://alphy.app" target="_blank">
+        <img src="./alphy.png" alt="Alphy Platform" />
+      </a>
+    </div>
+    <div class="project-content">
+      <a href="https://alphy.app" target="_blank"><h3>Alphy</h3></a>
+      <p>Alphy is a platform designed to transform how you interact with long form audio and video content. It addresses the challenge of information overload by making it easy to quickly extract key takeaways from podcasts, interviews, and especially Twitter Spaces. Alphy provides transcripts, summaries, Q&A capabilities, and identifies key insights. Users can also run custom prompts on transcripts to dive deeper into the content. This is particularly useful for those who need to efficiently process large volumes of audiovisual material. Served ~15,000 users.</p>
+    </div>
+  </div>
+
+  <div class="project-row reverse">
+    <div class="project-image">
+      <a href="https://kindlepathy.com" target="_blank">
+        <img src="./kindlepathy.png" alt="Kindlepathy Tool" />
+      </a>
+    </div>
+    <div class="project-content">
+      <a href="https://kindlepathy.com" target="_blank"><h3>Kindlepathy</h3></a>
+      <p>Kindlepathy was created out of a desire to seamlessly read web content on a Kindle. It's a tool that takes articles and blog posts from the web and reformats them into a clean, lightweight HTML version, perfect for the Kindle's browser. This solves the common frustrations of navigating clunky websites on the Kindle or cluttering your device library with many individual files. The core idea is to provide a focused and pleasant reading experience for web-based material on an e-reader.</p>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,140 @@
 // Homepage/Index styles mixin
 @mixin index-styles {
+
   .homepage {
     max-width: $max-width;
     margin: 0 auto;
     padding: $spacing-lg;
-    overflow-x: hidden;
+    overflow-x: visible;
     word-wrap: break-word;
   }
+
+  // Hero section with logo and title
+  .hero-section {
+    margin-bottom: $spacing-lg;
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  .hero-logo {
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .hero-text h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .hero-subtitle {
+    margin: $spacing-xs 0 0 0;
+    color: $color-text-muted;
+    font-size: 1.1rem;
+  }
+
+  // Projects showcase
+  .projects-showcase {
+    margin: ($spacing-lg * 1.5) 0;
+    overflow-x: visible;
+  }
+
+  .project-row {
+    display: flex;
+    gap: $spacing-lg;
+    margin-bottom: ($spacing-lg * 1.5);
+    align-items: center;
+    padding: $spacing-md;
+    // Background and border styling removed as per user request.
+    // background: rgba(var(--color-border), 0.35);
+    // border-radius: $border-radius * 2;
+    // border: 1px solid rgba(var(--color-border), 0.5);
+
+
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .project-image {
+    flex: 0 0 40%;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // Tablet: Small negative margins to start the effect
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .project-row .project-image {
+      margin-left: -$spacing-md;
+    }
+
+    .project-row.reverse .project-image {
+      margin-left: 0;
+      margin-right: -$spacing-md;
+    }
+  }
+
+  // Desktop: Full negative margins for larger screens
+  @media (min-width: 1200px) {
+    // Override parent overflow constraints for project showcase
+    html, body, main, .content {
+      overflow-x: visible !important;
+    }
+
+    .project-row .project-image {
+      margin-left: -$spacing-lg * 3;
+    }
+
+    .project-row.reverse .project-image {
+      margin-left: 0;
+      margin-right: -$spacing-lg * 3;
+    }
+  }
+
+  .project-content {
+    flex: 1;
+
+    h3 {
+      margin: 0 0 $spacing-sm 0;
+      font-size: 1.4rem;
+
+      a {
+        color: $color-text;
+        text-decoration: none;
+
+        &:hover {
+          color: $color-accent;
+        }
+      }
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.6;
+    }
+  }
+
+  // Connect section styles removed as the section is being removed from HTML content.
+  // .connect-section { ... }
+  // .connect-links { ... }
+  // No specific .connect-icon styling needed if we use text links
 
   .homepage h1 {
     margin-bottom: $spacing-md;
   }
 
   .homepage h2 {
-    margin-top: $spacing-lg;
+    margin-top: $spacing-lg*2;
     margin-bottom: $spacing-md;
   }
 
@@ -22,6 +143,38 @@
     .homepage {
       padding: $spacing-md $spacing-sm;
     }
+
+    // Hero adjustments
+    .hero-content {
+      gap: $spacing-sm;
+    }
+
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    // Projects stack on mobile
+    .project-row {
+      flex-direction: column !important;
+      gap: $spacing-md;
+
+      &.reverse {
+        flex-direction: column !important;
+      }
+    }
+
+    .project-image {
+      flex: none;
+    }
+
+    // Connect links styles removed
+    // .connect-links {
+    //   // If more specific tablet styling is needed, add here
+    // }
 
     .homepage h1 {
       font-size: 1.8rem;
@@ -38,12 +191,39 @@
       padding: $spacing-sm ($spacing-xs * 0.8);
     }
 
+    // Hero mobile adjustments
+    .hero-content {
+      flex-direction: column;
+      text-align: center;
+      gap: $spacing-sm;
+    }
+
+    .hero-text h1 {
+      font-size: 1.8rem;
+    }
+
+    .hero-logo {
+      width: 64px;
+      height: 64px;
+    }
+
+    // Connect links styles removed
+    // .connect-links {
+    //    gap: $spacing-md; // Adjust gap for stacked links on mobile
+    //    flex-direction: column; // Force column for very small screens if desired
+    //    align-items: flex-start;
+    // }
+
+    .project-content h3 { // Ensure project titles are responsive
+        font-size: 1.25rem;
+    }
+
     .homepage h1 {
       font-size: 1.6rem;
     }
 
-    .homepage h2 {
-      font-size: 1.2rem;
+    .homepage h2 { // "What I'm building" and other H2s
+      font-size: 1.3rem; // Slightly larger to be more prominent than project H3s
     }
   }
 }
