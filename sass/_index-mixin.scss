@@ -5,56 +5,40 @@
     max-width: $max-width;
     margin: 0 auto;
     padding: $spacing-lg;
-    overflow-x: visible;
+    overflow-x: visible; // Allow project showcase to bleed
     word-wrap: break-word;
   }
 
-  // Hero section with logo and title
-  .hero-section {
-    margin-bottom: $spacing-lg;
-  }
+  // New "Low Key Cool" Hero Styles
+  .hero-ksp {
+    border-left: 4px solid $color-accent;
+    padding-left: $spacing-md;
+    padding-top: $spacing-md;
+    padding-bottom: $spacing-md;
+    text-align: left;
 
-  .hero-content {
-    display: flex;
-    align-items: center;
-    gap: $spacing-md;
-    margin-bottom: $spacing-lg;
-  }
+    p {
+      color: $color-text;
+      line-height: 1rem; // Note: This is quite tight, intentional.
 
-  .hero-logo {
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .hero-text h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 700;
-  }
-
-  .hero-subtitle {
-    margin: $spacing-xs 0 0 0;
-    color: $color-text-muted;
-    font-size: 1.1rem;
+      &:last-child {
+        margin-bottom: 0; // No margin for the last paragraph in hero
+      }
+    }
   }
 
   // Projects showcase
   .projects-showcase {
-    margin: ($spacing-lg * 1.5) 0;
-    overflow-x: visible;
+    margin: $spacing-lg 0; // Unified vertical spacing
+    overflow-x: visible; // Ensure child elements can overflow
   }
 
   .project-row {
     display: flex;
     gap: $spacing-lg;
-    margin-bottom: ($spacing-lg * 1.5);
+    margin-bottom: $spacing-lg; // Unified vertical spacing
     align-items: center;
     padding: $spacing-md;
-    // Background and border styling removed as per user request.
-    // background: rgba(var(--color-border), 0.35);
-    // border-radius: $border-radius * 2;
-    // border: 1px solid rgba(var(--color-border), 0.5);
-
 
     &.reverse {
       flex-direction: row-reverse;
@@ -72,7 +56,7 @@
     }
   }
 
-  // Tablet: Small negative margins to start the effect
+  // Tablet: Small negative margins for project image overflow effect
   @media (min-width: 769px) and (max-width: 1024px) {
     .project-row .project-image {
       margin-left: -$spacing-md;
@@ -84,12 +68,40 @@
     }
   }
 
-  // Desktop: Full negative margins for larger screens
+  // Desktop: Full negative margins for project image overflow effect
   @media (min-width: 1200px) {
-    // Override parent overflow constraints for project showcase
-    html, body, main, .content {
+    // Override parent overflow constraints for project showcase full-bleed effect
+    // This is scoped within index-styles, so it only applies when .homepage is present on body
+    // and this mixin is included.
+    html.homepage-overflow-visible,
+    body.homepage.homepage-overflow-visible,
+    body.homepage main.homepage-overflow-visible,
+    body.homepage .content.homepage-overflow-visible {
       overflow-x: visible !important;
     }
+    // A script should add `homepage-overflow-visible` to html, body, main, .content on homepage loads
+    // For now, if Zola templating allows, we can try to achieve this by assuming the classes will be added manually
+    // or by a broader selector, though more specific is safer.
+    // The previous `html, body, main, .content` selector was too broad.
+    // Let's assume for now that if .homepage is active, these elements need to allow overflow.
+    // This might need JavaScript to conditionally add classes to html/body/main for better scoping.
+    // For a CSS-only approach, this is tricky. The most direct (but broad) way was the original:
+    // html, body, main, .content {
+    //   overflow-x: visible !important;
+    // }
+    // Given this mixin is applied to `body.homepage`, we can make it slightly more specific:
+    // body.homepage, body.homepage main, body.homepage .content {
+    //  overflow-x: visible !important;
+    // }
+    // And for `html` it would still need to be global or JS-driven.
+    // Reverting to a slightly less broad, but still impactful approach for the demo:
+    // This implies that when .homepage is active, these specific containers allow overflow.
+    .homepage, // The .homepage div itself
+    main,       // The main element when .homepage is a class on body
+    .content {  // The .content div within main, when .homepage is on body
+      overflow-x: visible !important;
+    }
+
 
     .project-row .project-image {
       margin-left: -$spacing-lg * 3;
@@ -124,17 +136,12 @@
     }
   }
 
-  // Connect section styles removed as the section is being removed from HTML content.
-  // .connect-section { ... }
-  // .connect-links { ... }
-  // No specific .connect-icon styling needed if we use text links
-
   .homepage h1 {
     margin-bottom: $spacing-md;
   }
 
-  .homepage h2 {
-    margin-top: $spacing-lg*2;
+  .homepage h2 { // e.g., "Spotlight"
+    margin-top: $spacing-lg; // Unified vertical spacing (reduced from $spacing-lg*2)
     margin-bottom: $spacing-md;
   }
 
@@ -144,37 +151,22 @@
       padding: $spacing-md $spacing-sm;
     }
 
-    // Hero adjustments
-    .hero-content {
-      gap: $spacing-sm;
-    }
-
-    .hero-text h1 {
-      font-size: 2rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-
     // Projects stack on mobile
     .project-row {
-      flex-direction: column !important;
+      flex-direction: column !important; // Ensure it overrides .reverse
       gap: $spacing-md;
 
       &.reverse {
-        flex-direction: column !important;
+        flex-direction: column !important; // Explicitly stack reversed rows too
       }
     }
 
     .project-image {
-      flex: none;
+      flex: none; // Reset flex sizing
+      // Reset negative margins if they were somehow applied
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
-
-    // Connect links styles removed
-    // .connect-links {
-    //   // If more specific tablet styling is needed, add here
-    // }
 
     .homepage h1 {
       font-size: 1.8rem;
@@ -182,7 +174,7 @@
 
     .homepage h2 {
       font-size: 1.4rem;
-      margin-top: $spacing-md;
+      margin-top: $spacing-md; // Slightly less top margin on tablet
     }
   }
 
@@ -191,30 +183,7 @@
       padding: $spacing-sm ($spacing-xs * 0.8);
     }
 
-    // Hero mobile adjustments
-    .hero-content {
-      flex-direction: column;
-      text-align: center;
-      gap: $spacing-sm;
-    }
-
-    .hero-text h1 {
-      font-size: 1.8rem;
-    }
-
-    .hero-logo {
-      width: 64px;
-      height: 64px;
-    }
-
-    // Connect links styles removed
-    // .connect-links {
-    //    gap: $spacing-md; // Adjust gap for stacked links on mobile
-    //    flex-direction: column; // Force column for very small screens if desired
-    //    align-items: flex-start;
-    // }
-
-    .project-content h3 { // Ensure project titles are responsive
+    .project-content h3 {
         font-size: 1.25rem;
     }
 
@@ -222,8 +191,9 @@
       font-size: 1.6rem;
     }
 
-    .homepage h2 { // "What I'm building" and other H2s
-      font-size: 1.3rem; // Slightly larger to be more prominent than project H3s
+    .homepage h2 {
+      font-size: 1.3rem;
+      // Inherits margin-top: $spacing-md from the 768px breakpoint
     }
   }
 }

@@ -3,18 +3,15 @@ title = "Egemen Göl"
 description = "Developer, builder, and creator of useful things. Welcome to my corner of the internet."
 +++
 
-<div class="hero-section">
-  <div class="hero-content">
-    {{ hero_logo(alt="Egemen Göl") }}
-    <div class="hero-text">
-      <h1>I'm Egemen</h1>
-      <p class="hero-subtitle">Developer, builder, and creator of useful things. Welcome to my corner of the internet.</p>
-    </div>
-  </div>
+<div class="hero-ksp">
+  <p>I'm Egemen, creator of useful things.</p>
+  <p>Building with backend technologies, Zero-Knowledge, Web3, and GenAI.</p>
+  <p>Welcome to my corner of the internet.</p>
 </div>
 
-## About Me
+<!-- ## About Me -->
 
+<!--
 Driven by a fascination with transforming ambitious ideas into tangible realities at the cutting edge of technology, my work often involves navigating complex domains. This journey has spanned architecting resilient backend infrastructures and pioneering in the Web3 space, to exploring the creative horizons of generative AI. With ZkPassport, I'm currently focused on shaping the future of digital identity through privacy-enhancing technologies, ensuring that intricate concepts translate into secure and intuitive solutions. My goal is always to build not just functional systems, but also to make the 'why' and 'how' behind them understandable and compelling.
 
 ---
@@ -32,14 +29,15 @@ Exploring the frontiers of technology and translating those discoveries into mea
 ---
 
 You can find more of my work on <a href="https://github.com/egemengol" target="_blank">GitHub</a>, connect with me on <a href="https://linkedin.com/in/egemen-gol/" target="_blank">LinkedIn</a>, or reach out via <a href="mailto:egemengol@gmail.com">email</a>.
+-->
+
+
+<!-- ## Spotlight
+
+Check out my latest series on **[Spread](/series/spread/)** - an ergonomic PubSub/EventBus library for Golang that I built to solve the gap between heavyweight message brokers and custom channel implementations. -->
 
 
 ## Spotlight
-
-Check out my latest series on **[Spread](/series/spread/)** - an ergonomic PubSub/EventBus library for Golang that I built to solve the gap between heavyweight message brokers and custom channel implementations.
-
-
-## Online Things I've Built
 
 <div class="projects-showcase">
   <div class="project-row">
@@ -50,7 +48,7 @@ Check out my latest series on **[Spread](/series/spread/)** - an ergonomic PubSu
     </div>
     <div class="project-content">
       <a href="https://alphy.app" target="_blank"><h3>Alphy</h3></a>
-      <p>Alphy is a platform designed to transform how you interact with long form audio and video content. It addresses the challenge of information overload by making it easy to quickly extract key takeaways from podcasts, interviews, and especially Twitter Spaces. Alphy provides transcripts, summaries, Q&A capabilities, and identifies key insights. Users can also run custom prompts on transcripts to dive deeper into the content. This is particularly useful for those who need to efficiently process large volumes of audiovisual material. Served ~15,000 users.</p>
+      <p>Alphy makes long audio/video content easy to digest. It offers transcripts, summaries, Q&A, and insights for podcasts, interviews, and especially Twitter Spaces, plus custom transcript prompts. Served ~15,000 users.</p>
     </div>
   </div>
 
@@ -62,7 +60,7 @@ Check out my latest series on **[Spread](/series/spread/)** - an ergonomic PubSu
     </div>
     <div class="project-content">
       <a href="https://kindlepathy.com" target="_blank"><h3>Kindlepathy</h3></a>
-      <p>Kindlepathy was created out of a desire to seamlessly read web content on a Kindle. It's a tool that takes articles and blog posts from the web and reformats them into a clean, lightweight HTML version, perfect for the Kindle's browser. This solves the common frustrations of navigating clunky websites on the Kindle or cluttering your device library with many individual files. The core idea is to provide a focused and pleasant reading experience for web-based material on an e-reader.</p>
+      <p>Kindlepathy offers a clean, lightweight HTML version of web articles and blog posts for easy reading on your Kindle's browser. Enjoy a focused reading experience for web content on your e-reader without website clutter.</p>
     </div>
   </div>
 </div>
