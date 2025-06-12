@@ -1,0 +1,2 @@
+{% set resized_img = resize_image(path=path, height=440, op="fit_height") %}
+<img src="{{ resized_img.url | replace(from=config.base_url, to="") }}" alt="{{ alt }}" width="{{ resized_img.width }}" height="{{ resized_img.height }}" />

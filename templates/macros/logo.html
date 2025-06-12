@@ -1,0 +1,4 @@
+{% macro logo_img(display_width, display_height, class="", alt="Logo") %}
+  {% set resized_logo = resize_image(path="logo.png", width=256, height=256) %}
+  <img src="{{ resized_logo.url | replace(from=config.base_url, to="") }}" alt="{{ alt }}" class="{{ class }}" width="{{ display_width }}" height="{{ display_height }}" />
+{% endmacro logo_img %}

@@ -1,3 +1,4 @@
+{% import "macros/logo.html" as logo_macros %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,6 +36,8 @@
 
     <!-- Preload critical assets -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    {% set preload_logo = resize_image(path="logo.png", width=256, height=256) %}
+    <link rel="preload" href="{{ preload_logo.url | replace(from=config.base_url, to="") }}" as="image" type="image/png">
 
 
   </head>
@@ -42,8 +45,7 @@
     <header class="site-header">
       <nav class="navbar">
         <a href="/">
-          {% set logo = resize_image(path="logo.png", width=36, height=36) %}
-          <img class="logo-link" src="{{ logo.url | replace(from=config.base_url, to="") }}" width="36" height="36" />Home</a>
+          {{ logo_macros::logo_img(display_width=36, display_height=36, class="logo-link") }}Home</a>
         <a href="/blog/">Blog</a>
         <!-- <a href="/book/">Book</a> -->
         <div class="spacer"></div>

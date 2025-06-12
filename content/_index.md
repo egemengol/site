@@ -5,7 +5,7 @@ description = "Developer, builder, and creator of useful things. Welcome to my c
 
 <div class="hero-section">
   <div class="hero-content">
-    <img src="/logo.png" alt="Egemen Göl" class="hero-logo" width="80" height="80" />
+    {{ hero_logo(alt="Egemen Göl") }}
     <div class="hero-text">
       <h1>I'm Egemen</h1>
       <p class="hero-subtitle">Developer, builder, and creator of useful things. Welcome to my corner of the internet.</p>
@@ -45,7 +45,7 @@ Check out my latest series on **[Spread](/series/spread/)** - an ergonomic PubSu
   <div class="project-row">
     <div class="project-image">
       <a href="https://alphy.app" target="_blank">
-        <img src="./alphy.png" alt="Alphy Platform" />
+        {{ project_image(path="alphy.png", alt="Alphy Platform") }}
       </a>
     </div>
     <div class="project-content">
@@ -57,7 +57,7 @@ Check out my latest series on **[Spread](/series/spread/)** - an ergonomic PubSu
   <div class="project-row reverse">
     <div class="project-image">
       <a href="https://kindlepathy.com" target="_blank">
-        <img src="./kindlepathy.png" alt="Kindlepathy Tool" />
+        {{ project_image(path="kindlepathy.png", alt="Kindlepathy Tool") }}
       </a>
     </div>
     <div class="project-content">
