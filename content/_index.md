@@ -6,7 +6,7 @@ description = "Developer, builder, and creator of useful things. Welcome to my c
 <div class="hero-ksp">
   <p>I'm Egemen, creator of useful things.</p>
   <p>Building with backend technologies, Zero-Knowledge, Web3, and GenAI.</p>
-  <p>Welcome to my corner of the internet.</p>
+  <p>Welcome to my corner of the internet. Explore my <a href="/blog">blog</a>.</p>
 </div>
 
 <!-- ## About Me -->
