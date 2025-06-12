@@ -25,7 +25,7 @@ In Validium mode, the data only lives on a L2 network called Data Availability C
 ## Components
 Taken from [StarkWare docs](https://docs.starkware.co/starkex-v4/overview)
 
-![StarkNet components](./starknet-components.png)
+<img src="starknet-components.png" alt="StarkNet components" />
 
 StarkEx Service runs all the transactions with given inputs and remembers the state.
 

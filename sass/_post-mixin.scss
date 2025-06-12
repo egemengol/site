@@ -36,6 +36,13 @@
     overflow-x: auto;
   }
 
+  .post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: $spacing-md auto;
+  }
+
   .post-content h2,
   .post-content h3,
   .post-content h4 {
