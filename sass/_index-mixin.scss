@@ -1,6 +1,5 @@
 // Homepage/Index styles mixin
 @mixin index-styles {
-
   .homepage {
     max-width: $max-width;
     margin: 0 auto;
@@ -155,6 +154,7 @@
     .project-row {
       flex-direction: column !important; // Ensure it overrides .reverse
       gap: $spacing-md;
+      padding: $spacing-md $spacing-xs; // Reduced horizontal padding on mobile
 
       &.reverse {
         flex-direction: column !important; // Explicitly stack reversed rows too
@@ -173,8 +173,12 @@
     }
 
     .homepage h2 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       margin-top: $spacing-md; // Slightly less top margin on tablet
+    }
+
+    .hero-ksp p {
+      line-height: 1.4rem; // Improved line-height for readability on mobile
     }
   }
 
