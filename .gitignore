@@ -1,3 +1,5 @@
 public
 .zed
 **/.DS_Store
+**/*.log
+report.html

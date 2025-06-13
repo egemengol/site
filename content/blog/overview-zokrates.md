@@ -29,7 +29,7 @@ Normally, one does not need a blockchain for being either a Prover or a Verifier
 ### A Sample Program
 Let us go through [one of the examples](https://zokrates.github.io/examples/sha256example.html) in the ZoKrates docs.
 
-```/dev/null/zokrates-example.zok:no-line-numbers
+```
 import "hashes/sha256/512bitPacked" as sha256packed
 
 def main(private field a, private field b, private field c, private field d):

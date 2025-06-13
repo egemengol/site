@@ -40,7 +40,7 @@ It is an interesting Turing-complete language, where asserting and assigning mea
 StarkNet contracts do not have off-chain state.
 
 The language feels quite close to Solidity after applying some syntactic sugar. This is the first example given in the docs:
-```cairo:no-line-numbers
+```
 # Declare this file as a StarkNet contract.
 %lang starknet
 
