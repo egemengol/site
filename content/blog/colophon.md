@@ -33,3 +33,7 @@ Served via nginx, with certbot for HTTPS, on a Hetzner VPS.
 ## The Verdict
 
 The result is a fast, privacy-respecting blog that's enjoyable to read and maintain. Striving for a balance of modern features and lightweight performance, this site aims to be a pleasant corner of the web.
+
+---
+
+Also, [justfuckingusehtml.com](https://justfuckingusehtml.com/)
