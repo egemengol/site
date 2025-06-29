@@ -13,9 +13,11 @@ generate_feeds = true
 feed_filenames = ["atom.xml", "rss.xml"]
 
 taxonomies = [
-    { name = "tags", feed = true, paginate_by = 8, list_template = "tags/list.html", single_template = "tags/single.html" },
+    { name = "tags", feed = false, paginate_by = 8, list_template = "tags/list.html", single_template = "tags/single.html" },
     { name = "series", feed = true, paginate_by = 8, list_template = "series/list.html", single_template = "series/single.html" },
 ]
+
+exclude_paginated_pages_in_sitemap = "all"
 
 [markdown]
 highlight_code = true
