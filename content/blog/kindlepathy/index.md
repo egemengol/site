@@ -3,7 +3,10 @@ title = "Introducing Kindlepathy"
 date = 2025-06-13
 description = "Introducing Kindlepathy: read web articles and blog posts on your Kindle's browser with a clean, lightweight HTML version. Send content from your PC or phone."
 [taxonomies]
+series = ["Kindlepathy"]
 tags = ["kindle", "reading", "web-content", "e-reader"]
+[extra]
+series_index = 1
 +++
 
 I love my kindle and want to ***read web content*** (mainly blogposts alongside some grayscale manga) on it.
